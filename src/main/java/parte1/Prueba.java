@@ -23,7 +23,7 @@ public class Prueba {
         Auxiliar1 pedro = new Auxiliar1(recepcion, pacientes);
         
         for(int i = 0; i < 5;i ++){
-            
+            System.out.println("Ha funcionado");
         }
         
     }

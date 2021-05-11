@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package parte1;
-//Holi wenas
+
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
