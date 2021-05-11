@@ -32,17 +32,20 @@ public class Auxiliar1 extends Thread {
         while(true){
             try {
                 
-                persona = pacientes.poll();
+                persona = pacientes.take();
                 tiempo = ((rand.nextInt(2) + 1)/2) * 1000;
                 sleep(tiempo);
                 if(persona.getCitado()){
-                    persona.setPuesto(recepcion.salaLibre());
+                    PuestoVacunacion libre = recepcion.salaLibre();
+                    System.out.println("El paciente " + persona.getID() 
+                            + " procede a vacunarse en la sala " + libre.getID()
+                            + " por " + libre.get_med_id());
+                    persona.setPuesto(libre);
                     persona.start();
                 }
                 else{
                     //NO ESTÁ CITADO
-                    int id = persona.getID();
-                    System.out.println("El paciente no está citado para hoy: " + id);
+                    System.out.println("El paciente no está citado para hoy: " + persona.getID());
                 }
             } catch (InterruptedException ex) {
                 Logger.getLogger(Auxiliar1.class.getName()).log(Level.SEVERE, null, ex);

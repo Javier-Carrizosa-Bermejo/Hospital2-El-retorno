@@ -19,7 +19,7 @@ public class PuestoVacunacion {
 Random rand = new Random();
     private Lock turno = new ReentrantLock();
     private Condition enEspera = turno.newCondition();
-    private int pacientes = 0, tiempo, id;
+    private int pacientes = 0, tiempo, id, medico_id;
     private Recepcion recepcion;
     
     PuestoVacunacion(int id, Recepcion recepcion){
@@ -32,16 +32,17 @@ Random rand = new Random();
         turno.lock();
         try {
             pacientes ++;
-            tiempo = (rand.nextInt(2) + 3) * 1000;
+            tiempo = (rand.nextInt(2) + 3) * 1000 + 6000;
             sleep(tiempo);
             
-            if(pacientes == 15)
+            if(pacientes >= 15)
             {
                 //EL MEDICO ABANDONA CON LO QUE LA SALA NO QUEDA LIBRE 
-                enEspera.notify();
+                System.out.println("Se han vacunado 15 pacientes, " + this.id + " procede a cerrarse");
+                enEspera.signal();
             }
             
-            else{
+            else if (pacientes < 15){
                 //LIBERAR SALA 
                 recepcion.liberarSala(id);
             }
@@ -52,15 +53,18 @@ Random rand = new Random();
     }
     
     
-    public void vacunar() throws InterruptedException{
+    public void vacunar(int med_id) throws InterruptedException{
         turno.lock();
-        //PRIMERO LIBERA SALA
-        recepcion.liberarSala(id);
+        this.medico_id = med_id;
+        System.out.println("El medico " + medico_id + " entra en la sala " + this.id);
+        recepcion.liberarSala(this.id);
         try {
             while (pacientes < 15){
                 enEspera.await();
             }
             pacientes = 0;
+            System.out.println("El medico " + medico_id + " abandona la sala " + this.id);
+            recepcion.medicoAbandonaSala(this.id);
         } finally {
             turno.unlock();
         }
@@ -68,6 +72,10 @@ Random rand = new Random();
     
     public int getID(){
         return this.id;
+    }
+    
+    public int get_med_id(){
+        return this.medico_id;
     }
     
 }

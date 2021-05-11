@@ -14,7 +14,7 @@ import java.util.logging.Logger;
  * @author Revij
  */
 public class Paciente extends Thread{
-    private boolean citado = true;
+    private boolean citado;
     Random rand = new Random();
     private int probabilidad, id;
     private PuestoVacunacion puesto;
@@ -22,6 +22,7 @@ public class Paciente extends Thread{
     Paciente(int id){
         this.id = id;
         probabilidad = rand.nextInt(100);
+        this.citado = true; 
         if(probabilidad == 99){
             citado = false;
         }
@@ -30,7 +31,12 @@ public class Paciente extends Thread{
     @Override
     public void run(){
         try {
-            puesto.vacunarse();
+            if(citado){
+                puesto.vacunarse();
+            }
+            else{
+
+            }
         } catch (InterruptedException ex) {
             Logger.getLogger(Paciente.class.getName()).log(Level.SEVERE, null, ex);
         }

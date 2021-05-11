@@ -17,26 +17,25 @@ import java.util.logging.Logger;
  */
 public class Sanitario extends Thread{
     Random rand = new Random();
-    private int tiempoPreparacion;
+    private int tiempoPreparacion, id;
     private CyclicBarrier descanso = new CyclicBarrier(2);
     private Recepcion recepcion;
     private PuestoVacunacion miPuesto;
     
-    Sanitario(Recepcion recepcion){
+    Sanitario(Recepcion recepcion, int id){
         tiempoPreparacion = rand.nextInt(3) + 1;
         tiempoPreparacion *= 1000;
         this.recepcion = recepcion;
+        this.id = id;
         
-    }
-    
-    public void trabajo() throws InterruptedException, BrokenBarrierException{
-        descanso.await();
     }
     
     @Override
     public void run(){
-        try {
+        while(true){
+            try {
             sleep(tiempoPreparacion);
+            System.out.println("Sanitario " + id  + " entra en el hospital");
             /*
             Tiene que encontrar sala de recepcion y ponerse a vacunar
             
@@ -54,9 +53,11 @@ public class Sanitario extends Thread{
             */
             
             miPuesto = recepcion.medicoEntraEnSala();
-            miPuesto.vacunar();
+            miPuesto.vacunar(id);
+            sleep(15000);
         } catch (InterruptedException ex) {
             Logger.getLogger(Sanitario.class.getName()).log(Level.SEVERE, null, ex);
+        }
         }
     }
     
