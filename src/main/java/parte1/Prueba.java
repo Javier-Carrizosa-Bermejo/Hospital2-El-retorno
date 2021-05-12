@@ -23,6 +23,9 @@ public class Prueba {
         PuestoVacunacion[] puestos = new PuestoVacunacion[10];
         Recepcion recepcion = new Recepcion(puestos);
         
+        Auxiliar2 javi = new Auxiliar2(recepcion);
+        javi.start();
+        
         for(int j = 0; j < 10; j++){
             PuestoVacunacion puesto = new PuestoVacunacion(j, recepcion);
             puestos[j] = puesto;

@@ -5,6 +5,7 @@
  */
 package parte1;
 
+import java.util.concurrent.Semaphore;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -19,6 +20,8 @@ public class Recepcion {
     private boolean noLibre = true;
     private Lock libre = new ReentrantLock(), medicos = new ReentrantLock();
     private Condition ningunLibre = libre.newCondition();
+    private Semaphore vacuna = new Semaphore(0);
+    public int vacunas = 0;
     
     
     Recepcion(PuestoVacunacion[] puestos){
@@ -73,7 +76,7 @@ public class Recepcion {
     }
     
     
-    public PuestoVacunacion medicoEntraEnSala(){
+    public PuestoVacunacion medicoEntraEnSala() throws InterruptedException{
         medicos.lock();
         try {
             int posicion = 0;
@@ -84,6 +87,8 @@ public class Recepcion {
                     
                 }
                 else{
+                    vacuna.acquire();
+                    vacunas --;
                     encontrado = true;
                     salasMedicos[posicion] = true;
                 }
@@ -94,5 +99,9 @@ public class Recepcion {
         }
     }
     
+    public void getVacuna(){
+        vacunas++;
+        vacuna.release();
+    }
     
 }
