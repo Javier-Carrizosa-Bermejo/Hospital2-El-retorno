@@ -32,9 +32,13 @@ public class Sanitario extends Thread{
     
     @Override
     public void run(){
-        while(true){
-            try {
+        try {
             sleep(tiempoPreparacion);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Sanitario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        while(true){
+            try {      
             System.out.println("Sanitario " + id  + " entra en el hospital");
             /*
             Tiene que encontrar sala de recepcion y ponerse a vacunar

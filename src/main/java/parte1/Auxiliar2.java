@@ -28,6 +28,7 @@ public class Auxiliar2 extends Thread {
             try {
                 for (int i = 0; i < 20; i++) {
                     recepcion.getVacuna();
+                    System.out.println("El auxiliar 2 ha añadido una vacuna. Hay " + recepcion.vacunas + " vacunas disponibles.");
                     sleep((int) ((Math.random() * 6) + 5) * 100);
                 }
                 System.out.println("El auxiliar 2 se va a descansar.");

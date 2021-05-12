@@ -110,6 +110,7 @@ public class Recepcion {
                 else{
                     vacuna.acquire();
                     vacunas --;
+                    System.out.println("El medico ha cogido una vacuna. Quedan " + vacunas + " vacunas disponibles.");
                     encontrado = true;
                     salasMedicos[posicion] = true;
                 }
