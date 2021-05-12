@@ -18,14 +18,16 @@ public class Paciente extends Thread{
     Random rand = new Random();
     private int probabilidad, id;
     private PuestoVacunacion puesto;
+    private Observacion salaDeObservacion;
     
-    Paciente(int id){
+    Paciente(int id, Observacion salaDeObservacion){
         this.id = id;
         probabilidad = rand.nextInt(100);
         this.citado = true; 
         if(probabilidad == 99){
             citado = false;
         }
+        this.salaDeObservacion = salaDeObservacion;
     }
     
     @Override
@@ -33,6 +35,7 @@ public class Paciente extends Thread{
         try {
             if(citado){
                 puesto.vacunarse();
+                salaDeObservacion.descansar(id);
             }
             else{
 

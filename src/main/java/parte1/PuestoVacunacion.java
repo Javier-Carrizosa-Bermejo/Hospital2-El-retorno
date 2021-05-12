@@ -31,6 +31,7 @@ Random rand = new Random();
     public void vacunarse() throws InterruptedException{
         turno.lock();
         try {
+           
             pacientes ++;
             tiempo = (rand.nextInt(2) + 3) * 1000 + 6000;
             sleep(tiempo);

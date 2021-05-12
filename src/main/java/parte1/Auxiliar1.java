@@ -47,6 +47,12 @@ public class Auxiliar1 extends Thread {
                     //NO ESTÁ CITADO
                     System.out.println("El paciente no está citado para hoy: " + persona.getID());
                 }
+                atendidos++;
+                if(atendidos >= 10){
+                    atendidos = 0;
+                    tiempo = (rand.nextInt(3) + 3) * 1000;
+                    sleep(tiempo);
+                }
             } catch (InterruptedException ex) {
                 Logger.getLogger(Auxiliar1.class.getName()).log(Level.SEVERE, null, ex);
             }

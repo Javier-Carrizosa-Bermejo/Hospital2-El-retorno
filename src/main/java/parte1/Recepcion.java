@@ -17,19 +17,21 @@ import java.util.concurrent.locks.ReentrantLock;
 public class Recepcion {
     private boolean[] listaSalas = new boolean[10], salasMedicos = new boolean[10];
     private PuestoVacunacion[] puestos;
-    private boolean noLibre = true;
     private Lock libre = new ReentrantLock(), medicos = new ReentrantLock();
-    private Condition ningunLibre = libre.newCondition();
     private Semaphore vacuna = new Semaphore(0);
     public int vacunas = 0;
+    private Condition ningunLibre = libre.newCondition(), ningunPuesto = libre.newCondition();
+    private Observacion salaObservacion;
+    private int ocupados = 0;
     
     
-    Recepcion(PuestoVacunacion[] puestos){
+    Recepcion(PuestoVacunacion[] puestos, Observacion salaObservacion){
         for(int i = 0; i < 10;i++){
             listaSalas[i] = false;
             salasMedicos[i] = false;
         }
         this.puestos = puestos;
+        this.salaObservacion = salaObservacion;
         
     }
     
@@ -37,14 +39,21 @@ public class Recepcion {
     public PuestoVacunacion salaLibre() throws InterruptedException{
         libre.lock();
         try {
+            while(ocupados >= 20 ){
+                System.out.println("No hay ningún puesto disponible");
+                ningunPuesto.await();
+            }
             while(true){
                 for(int i = 0; i < 10;i++){
                     if (listaSalas[i]){
                         listaSalas[i] = false;
+                        ocupados++;
                         return puestos[i];
                     }
                 }  //Si no hay ninguna sala libre toca esperar
-                System.out.println("No hay ninguna sala ");
+                
+                
+                System.out.println("Las salas de Vacunación están llenas");
                 ningunLibre.await();
             }
         } finally {
@@ -64,6 +73,18 @@ public class Recepcion {
             libre.unlock();
         }
     }
+    
+    
+    public void puestoLibre(){
+        libre.lock();
+        try {
+            ocupados--;
+            ningunPuesto.signal();
+        } finally {
+            libre.unlock();
+        }
+    }
+    
     
     
     public void medicoAbandonaSala(int id){

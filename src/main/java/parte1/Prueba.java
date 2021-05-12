@@ -21,7 +21,9 @@ public class Prueba {
         // TODO code application logic here
         LinkedBlockingQueue<Paciente> pacientes = new LinkedBlockingQueue<>();
         PuestoVacunacion[] puestos = new PuestoVacunacion[10];
-        Recepcion recepcion = new Recepcion(puestos);
+        Observacion salaObservacion = new Observacion();
+        Recepcion recepcion = new Recepcion(puestos, salaObservacion);
+        salaObservacion = new Observacion(recepcion);
         
         Auxiliar2 javi = new Auxiliar2(recepcion);
         javi.start();
@@ -43,7 +45,7 @@ public class Prueba {
         
         
         for(int k = 0; k < 200; k ++){
-            Paciente sara = new Paciente(k);
+            Paciente sara = new Paciente(k, salaObservacion);
             sleep(1000);
             pacientes.offer(sara);
         }
