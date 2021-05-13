@@ -19,29 +19,32 @@ import java.util.concurrent.locks.ReentrantLock;
  * @author Revij
  */
 public class Observacion {
-    AtomicBoolean[] salasObservacion = new AtomicBoolean[20];
-    Semaphore reaccion = new Semaphore(0, true);
+    AtomicBoolean[] salasObservacion = new AtomicBoolean[20]; //Muestra si una sala está ocupada o no
+    //False si no está ocupado, true si lo está.  
+    Semaphore reaccion = new Semaphore(0, true); //Bloqueará a los pacientes que sufran una reacción. 
     private Recepcion recepcion;
-    private ConcurrentLinkedQueue<Integer[]> problematicos;
+    private ConcurrentLinkedQueue<Integer[]> problematicos; //guardará el puesto y el id de cada paciente que sufra una reacción
     
     
     Observacion(Recepcion recepcion, ConcurrentLinkedQueue<Integer[]> problematicos){
         this.problematicos = problematicos;
         this.recepcion = recepcion;
-        for(int l = 0; l<20 ; l++){
+        for(int l = 0; l<20 ; l++){ //Inicianizamos los puestos, todos a 0
             salasObservacion[l] = new AtomicBoolean(false);
         }
     }
-    Observacion(){
+    
+    Observacion(){ // Sin este constructor no se puede inicializar el programa
         
     }
     
     public void descansar(int id_paciente) throws InterruptedException{
-        double probabilidad = Math.floor(Math.random() * 100); 
+        double probabilidad = Math.floor(Math.random() * 100); //probabilidad de tener una reacción
         boolean encontrado = false; 
-        int posicion = 0;
+        int posicion = 0;  //puesto
         while(!encontrado && posicion < 20){
-            if (salasObservacion[posicion].compareAndSet(false, true)){
+            //Este if compara cada puesto, si no está ocupado (false) se cambia automáticamente a true
+            if (salasObservacion[posicion].compareAndSet(false, true)){ 
                 encontrado = true;
                 
             }
@@ -52,21 +55,21 @@ public class Observacion {
         }
         if(probabilidad < 5){
             Integer[] conReaccion = {id_paciente, posicion}; 
-            problematicos.add(conReaccion);
-            reaccion.acquire();
+            problematicos.add(conReaccion); //se añade el id del paciente con su puesto
+            reaccion.acquire(); //el paciente se bloquea
         }
         else{
             sleep(10000);
             
         }
-        salasObservacion[posicion].set(false);
-        recepcion.puestoLibre();
-        System.out.println(id_paciente + " Se marcha a casa");
+        salasObservacion[posicion].set(false); //Liberamos el puesto
+        recepcion.puestoLibre();               //Informamos de que se ha ido el paciente
+        System.out.println(id_paciente + " Se marcha a casa del puesto" + posicion);
         
 
     }
     
-    public void vistoBueno(){
+    public void vistoBueno(){ //Se libera al primer paciente en reacción
         reaccion.release();
     }
     

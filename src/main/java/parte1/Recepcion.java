@@ -16,18 +16,18 @@ import java.util.concurrent.locks.ReentrantLock;
  */
 public class Recepcion {
     private boolean[] listaSalas = new boolean[10], salasMedicos = new boolean[10];
-    private PuestoVacunacion[] puestos;
+    private PuestoVacunacion[] puestos; //lista de puestos, 
     private Lock libre = new ReentrantLock(), medicos = new ReentrantLock();
     private Semaphore vacuna = new Semaphore(0);
     public int vacunas = 0;
     private Condition ningunLibre = libre.newCondition(), ningunPuesto = libre.newCondition();
     private Observacion salaObservacion;
-    private int ocupados = 0;
+    private int ocupados = 0; //mantiene la cuenta de cuantos pacientes han pasado a vacunarse
     
     
     Recepcion(PuestoVacunacion[] puestos, Observacion salaObservacion){
         for(int i = 0; i < 10;i++){
-            listaSalas[i] = false;
+            listaSalas[i] = false; //false si la sala está ocupada, true si está disponible. Ninguna sala está disponible al comienzo
             salasMedicos[i] = false;
         }
         this.puestos = puestos;
@@ -39,16 +39,19 @@ public class Recepcion {
     public PuestoVacunacion salaLibre() throws InterruptedException{
         libre.lock();
         try {
+            //no pueden haber más de 20 pacientes siendo atendidos, si hubiera más puede que la
+            //sala de observación sufriera desbordamiento
             while(ocupados >= 20 ){
                 System.out.println("No hay ningún puesto disponible");
                 ningunPuesto.await();
             }
+            System.out.println("Atendiendo a " + ocupados + "personas");
             while(true){
                 for(int i = 0; i < 10;i++){
                     if (listaSalas[i]){
-                        listaSalas[i] = false;
-                        ocupados++;
-                        return puestos[i];
+                        listaSalas[i] = false; //La sala queda ocupada
+                        ocupados++; //aumentamos el contador de atendidos
+                        return puestos[i]; //Devolvemos el puesto al auxiliar
                     }
                 }  //Si no hay ninguna sala libre toca esperar
                 
@@ -63,7 +66,7 @@ public class Recepcion {
     }
     
     
-    public void liberarSala(int id){ //Libera la sala indicada
+    public void liberarSala(int id){ //Libera la sala de vacunación indicada
         libre.lock();
         System.out.println("Se libera la sala " + id);
         try {
@@ -75,7 +78,7 @@ public class Recepcion {
     }
     
     
-    public void puestoLibre(){
+    public void puestoLibre(){ //Baja el contador de atendidos, avisa de que ha quedado un puesto libre
         libre.lock();
         try {
             ocupados--;
@@ -89,6 +92,7 @@ public class Recepcion {
     
     public void medicoAbandonaSala(int id){
         medicos.lock();
+        //Se libera la sala en la que estaba el médico
         try {
             salasMedicos[id] = false;
         } finally {
@@ -98,6 +102,8 @@ public class Recepcion {
     
     
     public PuestoVacunacion medicoEntraEnSala() throws InterruptedException{
+        //El médico busca la primera sala disponible. Solo hay 10 salas y 10 médicos, supuestamente
+        //siempre va a haber una sala para todos
         medicos.lock();
         try {
             int posicion = 0;
@@ -115,7 +121,7 @@ public class Recepcion {
                     salasMedicos[posicion] = true;
                 }
             }
-            return puestos[posicion];
+            return puestos[posicion]; //Devolvemos al sanitario el puesto en el que va a vacunar
         } finally {
             medicos.unlock();
         }

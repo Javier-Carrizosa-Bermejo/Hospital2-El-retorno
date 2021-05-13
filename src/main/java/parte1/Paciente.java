@@ -31,11 +31,11 @@ public class Paciente extends Thread{
     }
     
     @Override
-    public void run(){
+    public void run(){ //solo se inicia tras asignarle un puesto en recepcion 
         try {
-            if(citado){
-                puesto.vacunarse();
-                salaDeObservacion.descansar(id);
+            if(puesto!= null){
+                puesto.vacunarse(); //procede a vacunarse una vez le han indicado el puesto
+                salaDeObservacion.descansar(id); //va a la sala de observación y se sienta en el primer puesto libre
             }
             else{
 
@@ -46,11 +46,11 @@ public class Paciente extends Thread{
         
     }
     
-    public boolean getCitado(){
+    public boolean getCitado(){ 
         return citado;
     }
     
-    public void setPuesto(PuestoVacunacion puesto){
+    public void setPuesto(PuestoVacunacion puesto){ //En recepción se le asigna un puesto
         this.puesto = puesto;
     }
     

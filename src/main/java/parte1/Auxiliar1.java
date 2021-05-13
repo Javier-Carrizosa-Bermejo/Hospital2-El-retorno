@@ -17,7 +17,7 @@ import java.util.logging.Logger;
 public class Auxiliar1 extends Thread {
     private int atendidos = 0;
     long tiempo;
-    private LinkedBlockingQueue<Paciente> pacientes;
+    private LinkedBlockingQueue<Paciente> pacientes; //cola de entrada
     private Recepcion recepcion;
     Paciente persona;
     Random rand = new Random();
@@ -32,23 +32,27 @@ public class Auxiliar1 extends Thread {
         while(true){
             try {
                 
-                persona = pacientes.take();
-                tiempo = ((rand.nextInt(2) + 1)/2) * 1000;
-                sleep(tiempo);
-                if(persona.getCitado()){
-                    PuestoVacunacion libre = recepcion.salaLibre();
+                persona = pacientes.take(); //coje el primer elemento, si no se queda bloquado hasta que haya
+                /*tiempo = ((rand.nextInt(2) + 1)/2) * 1000; 
+                sleep(tiempo);*/ //tiempo de preparación
+                sleep((int) ((Math.random() * 6) + 5) * 100);
+                
+                if(persona.getCitado()){//Si está citado....
+                    PuestoVacunacion libre = recepcion.salaLibre(); //Busca un puesto de vacunación, se bloquea hasta que lo encuentra
                     System.out.println("El paciente " + persona.getID() 
                             + " procede a vacunarse en la sala " + libre.getID()
                             + " por " + libre.get_med_id());
-                    persona.setPuesto(libre);
-                    persona.start();
+                    persona.setPuesto(libre); //le da el puesto al paciente
+                    persona.start();  //el paciente inicia su rutina
                 }
                 else{
                     //NO ESTÁ CITADO
                     System.out.println("El paciente no está citado para hoy: " + persona.getID());
+                    persona.setPuesto(null); //se le asigna un puesto nulo
+                    persona.start();
                 }
                 atendidos++;
-                if(atendidos >= 10){
+                if(atendidos >= 10){ //Comprueba si le toca descansar
                     atendidos = 0;
                     tiempo = (rand.nextInt(3) + 3) * 1000;
                     sleep(tiempo);

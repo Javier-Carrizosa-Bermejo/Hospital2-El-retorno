@@ -18,19 +18,17 @@ import java.util.logging.Logger;
  */
 public class Sanitario extends Thread{
     Random rand = new Random();
-    private int tiempoPreparacion, id;
-    private CyclicBarrier descanso = new CyclicBarrier(2);
+    private int tiempoDormir, id;
     private Recepcion recepcion;
     private PuestoVacunacion miPuesto;
-    private ConcurrentLinkedQueue<Integer[]> problematicos;
-    private Integer[] paciente;
-    private Observacion salaObservacion;
+    private ConcurrentLinkedQueue<Integer[]> problematicos; //cola de pacientes que sufren una reacción
+    private Integer[] paciente; //paciente que sufre una reacción
+    private Observacion salaObservacion; 
     
     Sanitario(Recepcion recepcion, int id, ConcurrentLinkedQueue<Integer[]> problematicos, 
             Observacion salaObservacion){
         this.problematicos = problematicos;
-        tiempoPreparacion = rand.nextInt(3) + 1;
-        tiempoPreparacion *= 1000;
+        tiempoDormir= ( rand.nextInt(3) + 1 ) * 1000;
         this.recepcion = recepcion;
         this.id = id;
         this.salaObservacion = salaObservacion;
@@ -39,41 +37,28 @@ public class Sanitario extends Thread{
     
     @Override
     public void run(){
+        System.out.println("Sanitario " + id  + " entra en el hospital");
         try {
-            sleep(tiempoPreparacion);
+            sleep(tiempoDormir);
         } catch (InterruptedException ex) {
             Logger.getLogger(Sanitario.class.getName()).log(Level.SEVERE, null, ex);
         }
         while(true){
-            try {      
-            System.out.println("Sanitario " + id  + " entra en el hospital");
-            /*
-            Tiene que encontrar sala de recepcion y ponerse a vacunar
-            
-            
-            
-            Despues tiene que descansar
-            
-            
-            Si tiene una emergencia la socorre primero
-            
-            
-            Si no, vuelve a curar
-            
-            
-            */
-            
-            miPuesto = recepcion.medicoEntraEnSala();
-            miPuesto.vacunar(id);
-            sleep(15000);
-            while((paciente = problematicos.poll()) != null){
-                tiempoPreparacion = rand.nextInt(4) + 2;
-                sleep(tiempoPreparacion);
+            try {                  
+            miPuesto = recepcion.medicoEntraEnSala();   //El médico pilla la primera sala libre que vea
+            miPuesto.vacunar(id);                       //Procede a vacunar, tras 15 pacientes se va a descansar
+            tiempoDormir = (rand.nextInt(4) + 5) * 1000;
+            sleep(tiempoDormir);                        //Descansa
+            while((paciente = problematicos.poll()) != null){ //Si hay pacientes que sufren reacción los atiende
+                //poll() devuelve null si no hay elementos, si el paciente es null no se entra en el bucle
+                tiempoDormir = (rand.nextInt(4) + 2) * 1000;
+                sleep(tiempoDormir);
                 System.out.println("El paciente " + paciente[0] + " Ha tenido una reacción y"
                         + " ha sido tratado por " + this.id + " en el puesto " + paciente[1]);
-                salaObservacion.vistoBueno();
+                salaObservacion.vistoBueno();   //Da el visto bueno al paciente y lo deja ir
                 
             }
+            System.out.println("Sanitario " + id  + " ha salido de su descanso");
         } catch (InterruptedException ex) {
             Logger.getLogger(Sanitario.class.getName()).log(Level.SEVERE, null, ex);
         }

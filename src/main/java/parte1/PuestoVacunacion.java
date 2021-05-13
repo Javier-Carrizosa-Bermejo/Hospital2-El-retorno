@@ -16,14 +16,14 @@ import java.util.concurrent.locks.ReentrantLock;
  * @author Revij
  */
 public class PuestoVacunacion {
-Random rand = new Random();
+    Random rand = new Random();
     private Lock turno = new ReentrantLock();
     private Condition enEspera = turno.newCondition();
     private int pacientes = 0, tiempo, id, medico_id;
     private Recepcion recepcion;
     
     PuestoVacunacion(int id, Recepcion recepcion){
-        this.id = id;
+        this.id = id; //identificador de la sala
         this.recepcion = recepcion;
         
     }
@@ -33,8 +33,8 @@ Random rand = new Random();
         try {
            
             pacientes ++;
-            tiempo = (rand.nextInt(2) + 3) * 1000 + 6000;
-            sleep(tiempo);
+            tiempo = (rand.nextInt(3) + 3) * 1000;
+            sleep(tiempo); //tiempo que tarda en vacunarse
             
             if(pacientes >= 15)
             {
@@ -56,16 +56,16 @@ Random rand = new Random();
     
     public void vacunar(int med_id) throws InterruptedException{
         turno.lock();
-        this.medico_id = med_id;
+        this.medico_id = med_id; //se registra el medico asignado a la sala
         System.out.println("El medico " + medico_id + " entra en la sala " + this.id);
-        recepcion.liberarSala(this.id);
+        recepcion.liberarSala(this.id); //Se libera la sala (si no hay medico, el puesto de vacunacion no está disponible)
         try {
             while (pacientes < 15){
-                enEspera.await();
+                enEspera.await(); //Espera a que se atiendan 15 pacientes
             }
-            pacientes = 0;
+            pacientes = 0;  //Se resetea el contador
             System.out.println("El medico " + medico_id + " abandona la sala " + this.id);
-            recepcion.medicoAbandonaSala(this.id);
+            recepcion.medicoAbandonaSala(this.id); //El médico abandona la sala
         } finally {
             turno.unlock();
         }
