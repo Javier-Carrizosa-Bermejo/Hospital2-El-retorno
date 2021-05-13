@@ -67,7 +67,7 @@ public class Observacion {
         recepcion.puestoLibre();               //Informamos de que se ha ido el paciente
         String var1 = Integer.toString(id_paciente);
         String var2 = Integer.toString(posicion);
-        escrituraS.escritura(5, var1, var2, "");
+        escrituraS.escritura(4, var1, var2, "");
         //System.out.println(id_paciente + " Se marcha a casa del puesto" + posicion);
         
 
