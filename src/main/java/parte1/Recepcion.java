@@ -45,7 +45,6 @@ public class Recepcion {
                 System.out.println("No hay ningún puesto disponible");
                 ningunPuesto.await();
             }
-            System.out.println("Atendiendo a " + ocupados + "personas");
             while(true){
                 for(int i = 0; i < 10;i++){
                     if (listaSalas[i]){
