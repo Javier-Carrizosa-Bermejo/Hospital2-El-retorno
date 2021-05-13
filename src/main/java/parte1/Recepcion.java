@@ -15,6 +15,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * @author Revij
  */
 public class Recepcion {
+    private escrituraSegura escrituraS;
     private boolean[] listaSalas = new boolean[10], salasMedicos = new boolean[10];
     private PuestoVacunacion[] puestos; //lista de puestos, 
     private Lock libre = new ReentrantLock(), medicos = new ReentrantLock();
@@ -42,7 +43,8 @@ public class Recepcion {
             //no pueden haber más de 20 pacientes siendo atendidos, si hubiera más puede que la
             //sala de observación sufriera desbordamiento
             while(ocupados >= 20 ){
-                System.out.println("No hay ningún puesto disponible");
+                escrituraS.escritura(11, "", "", "");
+                //System.out.println("No hay ningún puesto disponible");
                 ningunPuesto.await();
             }
             while(true){
@@ -54,8 +56,8 @@ public class Recepcion {
                     }
                 }  //Si no hay ninguna sala libre toca esperar
                 
-                
-                System.out.println("Las salas de Vacunación están llenas");
+                escrituraS.escritura(12, "", "", "");
+                //System.out.println("Las salas de Vacunación están llenas");
                 ningunLibre.await();
             }
         } finally {
@@ -67,7 +69,9 @@ public class Recepcion {
     
     public void liberarSala(int id){ //Libera la sala de vacunación indicada
         libre.lock();
-        System.out.println("Se libera la sala " + id);
+        String var1 = Integer.toString(id);
+        escrituraS.escritura(13, var1, "", "");
+        //System.out.println("Se libera la sala " + id);
         try {
             listaSalas[id] = true;
             ningunLibre.signal();
@@ -115,7 +119,9 @@ public class Recepcion {
                 else{
                     vacuna.acquire();
                     vacunas --;
-                    System.out.println("El medico ha cogido una vacuna. Quedan " + vacunas + " vacunas disponibles.");
+                    String var1 = Integer.toString(vacunas);
+                    escrituraS.escritura(14, var1, "", "");
+                    //System.out.println("El medico ha cogido una vacuna. Quedan " + vacunas + " vacunas disponibles.");
                     encontrado = true;
                     salasMedicos[posicion] = true;
                 }

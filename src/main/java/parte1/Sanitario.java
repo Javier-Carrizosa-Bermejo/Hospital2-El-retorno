@@ -18,6 +18,7 @@ import java.util.logging.Logger;
  */
 public class Sanitario extends Thread{
     Random rand = new Random();
+    private escrituraSegura escrituraS;
     private int tiempoDormir, id;
     private Recepcion recepcion;
     private PuestoVacunacion miPuesto;
@@ -37,7 +38,9 @@ public class Sanitario extends Thread{
     
     @Override
     public void run(){
-        System.out.println("Sanitario " + id  + " entra en el hospital");
+        String var1 = Integer.toString(id);
+        escrituraS.escritura(15, var1, "", "");
+        //System.out.println("Sanitario " + id  + " entra en el hospital");
         try {
             sleep(tiempoDormir);
         } catch (InterruptedException ex) {
@@ -53,12 +56,16 @@ public class Sanitario extends Thread{
                 //poll() devuelve null si no hay elementos, si el paciente es null no se entra en el bucle
                 tiempoDormir = (rand.nextInt(4) + 2) * 1000;
                 sleep(tiempoDormir);
-                System.out.println("El paciente " + paciente[0] + " Ha tenido una reacción y"
-                        + " ha sido tratado por " + this.id + " en el puesto " + paciente[1]);
+                String var2 = Integer.toString(paciente[0]);
+                String var3 = Integer.toString(this.id);
+                escrituraS.escritura(2, var2, var3, "");
+                /**System.out.println("El paciente " + paciente[0] + " Ha tenido una reacción y"
+                        + " ha sido tratado por " + this.id + " en el puesto " + paciente[1]);*/
                 salaObservacion.vistoBueno();   //Da el visto bueno al paciente y lo deja ir
                 
             }
-            System.out.println("Sanitario " + id  + " ha salido de su descanso");
+            escrituraS.escritura(7, "", "", "");
+            //System.out.println("Sanitario " + id  + " ha salido de su descanso");
         } catch (InterruptedException ex) {
             Logger.getLogger(Sanitario.class.getName()).log(Level.SEVERE, null, ex);
         }

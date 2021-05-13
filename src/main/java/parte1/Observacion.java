@@ -19,6 +19,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * @author Revij
  */
 public class Observacion {
+    private escrituraSegura escrituraS;
     AtomicBoolean[] salasObservacion = new AtomicBoolean[20]; //Muestra si una sala está ocupada o no
     //False si no está ocupado, true si lo está.  
     Semaphore reaccion = new Semaphore(0, true); //Bloqueará a los pacientes que sufran una reacción. 
@@ -64,7 +65,10 @@ public class Observacion {
         }
         salasObservacion[posicion].set(false); //Liberamos el puesto
         recepcion.puestoLibre();               //Informamos de que se ha ido el paciente
-        System.out.println(id_paciente + " Se marcha a casa del puesto" + posicion);
+        String var1 = Integer.toString(id_paciente);
+        String var2 = Integer.toString(posicion);
+        escrituraS.escritura(5, var1, var2, "");
+        //System.out.println(id_paciente + " Se marcha a casa del puesto" + posicion);
         
 
     }

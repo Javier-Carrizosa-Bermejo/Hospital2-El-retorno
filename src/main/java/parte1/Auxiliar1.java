@@ -15,6 +15,7 @@ import java.util.logging.Logger;
  * @author Revij
  */
 public class Auxiliar1 extends Thread {
+    private escrituraSegura escrituraS;
     private int atendidos = 0;
     long tiempo;
     private LinkedBlockingQueue<Paciente> pacientes; //cola de entrada
@@ -31,23 +32,28 @@ public class Auxiliar1 extends Thread {
     public void run(){
         while(true){
             try {
-                
+                String var1,var2,var3;
                 persona = pacientes.take(); //coje el primer elemento, si no se queda bloquado hasta que haya
                 /*tiempo = ((rand.nextInt(2) + 1)/2) * 1000; 
                 sleep(tiempo);*/ //tiempo de preparación
-                sleep((int) ((Math.random() * 6) + 5) * 100);
-                
+                sleep((int) ((Math.random() * 6) + 5) * 100);                
                 if(persona.getCitado()){//Si está citado....
                     PuestoVacunacion libre = recepcion.salaLibre(); //Busca un puesto de vacunación, se bloquea hasta que lo encuentra
-                    System.out.println("El paciente " + persona.getID() 
+                    var1 = Integer.toString(persona.getID());
+                    var2 = Integer.toString(libre.getID());
+                    var3 = Integer.toString(libre.get_med_id());
+                    escrituraS.escritura(0, var1, var2, var3);
+                    /**System.out.println("El paciente " + persona.getID() 
                             + " procede a vacunarse en la sala " + libre.getID()
-                            + " por " + libre.get_med_id());
+                            + " por " + libre.get_med_id());*/
                     persona.setPuesto(libre); //le da el puesto al paciente
                     persona.start();  //el paciente inicia su rutina
                 }
                 else{
                     //NO ESTÁ CITADO
-                    System.out.println("El paciente no está citado para hoy: " + persona.getID());
+                    var1 = Integer.toString(persona.getID());
+                    escrituraS.escritura(1, var1, "", "");
+                    //System.out.println("El paciente no está citado para hoy: " + persona.getID());
                     persona.setPuesto(null); //se le asigna un puesto nulo
                     persona.start();
                 }

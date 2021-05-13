@@ -17,6 +17,7 @@ import java.util.concurrent.locks.ReentrantLock;
  */
 public class PuestoVacunacion {
     Random rand = new Random();
+    private escrituraSegura escrituraS;
     private Lock turno = new ReentrantLock();
     private Condition enEspera = turno.newCondition();
     private int pacientes = 0, tiempo, id, medico_id;
@@ -39,7 +40,9 @@ public class PuestoVacunacion {
             if(pacientes >= 15)
             {
                 //EL MEDICO ABANDONA CON LO QUE LA SALA NO QUEDA LIBRE 
-                System.out.println("Se han vacunado 15 pacientes, " + this.id + " procede a cerrarse");
+                String var1 = Integer.toString(this.id);
+                escrituraS.escritura(6, var1, "", "");
+                //System.out.println("Se han vacunado 15 pacientes, " + this.id + " procede a cerrarse");
                 enEspera.signal();
             }
             
@@ -57,14 +60,18 @@ public class PuestoVacunacion {
     public void vacunar(int med_id) throws InterruptedException{
         turno.lock();
         this.medico_id = med_id; //se registra el medico asignado a la sala
-        System.out.println("El medico " + medico_id + " entra en la sala " + this.id);
+        String var1 = Integer.toString(medico_id);
+        String var2 = Integer.toString(this.id);
+        escrituraS.escritura(10, var1, var2, "");
+        //System.out.println("El medico " + medico_id + " entra en la sala " + this.id);
         recepcion.liberarSala(this.id); //Se libera la sala (si no hay medico, el puesto de vacunacion no está disponible)
         try {
             while (pacientes < 15){
                 enEspera.await(); //Espera a que se atiendan 15 pacientes
             }
             pacientes = 0;  //Se resetea el contador
-            System.out.println("El medico " + medico_id + " abandona la sala " + this.id);
+            escrituraS.escritura(3, var1, "", "");
+            //System.out.println("El medico " + medico_id + " abandona la sala " + this.id);
             recepcion.medicoAbandonaSala(this.id); //El médico abandona la sala
         } finally {
             turno.unlock();
