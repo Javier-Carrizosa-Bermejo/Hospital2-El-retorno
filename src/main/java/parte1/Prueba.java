@@ -6,6 +6,7 @@
 package parte1;
 
 import static java.lang.Thread.sleep;
+import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
 /**
@@ -20,10 +21,11 @@ public class Prueba {
     public static void main(String[] args) throws InterruptedException {
         // TODO code application logic here
         LinkedBlockingQueue<Paciente> pacientes = new LinkedBlockingQueue<>();
+        ConcurrentLinkedQueue<Integer[]> reaccionesObservacion = new ConcurrentLinkedQueue<Integer[]>();
         PuestoVacunacion[] puestos = new PuestoVacunacion[10];
         Observacion salaObservacion = new Observacion();
         Recepcion recepcion = new Recepcion(puestos, salaObservacion);
-        salaObservacion = new Observacion(recepcion);
+        salaObservacion = new Observacion(recepcion, reaccionesObservacion );
         
         Auxiliar2 javi = new Auxiliar2(recepcion);
         javi.start();
@@ -39,7 +41,7 @@ public class Prueba {
         
         
         for(int i = 0; i < 10; i ++){
-            Sanitario alejandro = new Sanitario(recepcion, i);
+            Sanitario alejandro = new Sanitario(recepcion, i, reaccionesObservacion, salaObservacion);
             alejandro.start();
         }
         

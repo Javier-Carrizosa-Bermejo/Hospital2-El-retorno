@@ -7,6 +7,7 @@ package parte1;
 
 import java.util.Random;
 import java.util.concurrent.BrokenBarrierException;
+import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.CyclicBarrier;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,12 +22,18 @@ public class Sanitario extends Thread{
     private CyclicBarrier descanso = new CyclicBarrier(2);
     private Recepcion recepcion;
     private PuestoVacunacion miPuesto;
+    private ConcurrentLinkedQueue<Integer[]> problematicos;
+    private Integer[] paciente;
+    private Observacion salaObservacion;
     
-    Sanitario(Recepcion recepcion, int id){
+    Sanitario(Recepcion recepcion, int id, ConcurrentLinkedQueue<Integer[]> problematicos, 
+            Observacion salaObservacion){
+        this.problematicos = problematicos;
         tiempoPreparacion = rand.nextInt(3) + 1;
         tiempoPreparacion *= 1000;
         this.recepcion = recepcion;
         this.id = id;
+        this.salaObservacion = salaObservacion;
         
     }
     
@@ -59,6 +66,14 @@ public class Sanitario extends Thread{
             miPuesto = recepcion.medicoEntraEnSala();
             miPuesto.vacunar(id);
             sleep(15000);
+            while((paciente = problematicos.poll()) != null){
+                tiempoPreparacion = rand.nextInt(4) + 2;
+                sleep(tiempoPreparacion);
+                System.out.println("El paciente " + paciente[0] + " Ha tenido una reacción y"
+                        + " ha sido tratado por " + this.id + " en el puesto " + paciente[1]);
+                salaObservacion.vistoBueno();
+                
+            }
         } catch (InterruptedException ex) {
             Logger.getLogger(Sanitario.class.getName()).log(Level.SEVERE, null, ex);
         }

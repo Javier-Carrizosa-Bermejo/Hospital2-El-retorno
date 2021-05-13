@@ -6,6 +6,7 @@
 package parte1;
 
 import static java.lang.Thread.sleep;
+import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -18,14 +19,14 @@ import java.util.concurrent.locks.ReentrantLock;
  * @author Revij
  */
 public class Observacion {
-    AtomicInteger enObservacion = new AtomicInteger(0);
     AtomicBoolean[] salasObservacion = new AtomicBoolean[20];
-    Semaphore semaforo = new Semaphore(20);
-    Lock turno = new ReentrantLock();
-    Condition reaccion = turno.newCondition();
+    Semaphore reaccion = new Semaphore(0, true);
     private Recepcion recepcion;
+    private ConcurrentLinkedQueue<Integer[]> problematicos;
     
-    Observacion(Recepcion recepcion){
+    
+    Observacion(Recepcion recepcion, ConcurrentLinkedQueue<Integer[]> problematicos){
+        this.problematicos = problematicos;
         this.recepcion = recepcion;
         for(int l = 0; l<20 ; l++){
             salasObservacion[l] = new AtomicBoolean(false);
@@ -36,7 +37,6 @@ public class Observacion {
     }
     
     public void descansar(int id_paciente) throws InterruptedException{
-        enObservacion.incrementAndGet();
         double probabilidad = Math.floor(Math.random() * 100); 
         boolean encontrado = false; 
         int posicion = 0;
@@ -51,21 +51,23 @@ public class Observacion {
             
         }
         if(probabilidad < 5){
-            System.out.println(id_paciente + " Ha reaccionado");
+            Integer[] conReaccion = {id_paciente, posicion}; 
+            problematicos.add(conReaccion);
+            reaccion.acquire();
         }
         else{
             sleep(10000);
-            salasObservacion[posicion].set(false);
-            enObservacion.decrementAndGet();
-            recepcion.puestoLibre();
+            
         }
+        salasObservacion[posicion].set(false);
+        recepcion.puestoLibre();
         System.out.println(id_paciente + " Se marcha a casa");
         
 
     }
     
-    public int getEnObservavion(){
-        return enObservacion.get();
+    public void vistoBueno(){
+        reaccion.release();
     }
     
    
