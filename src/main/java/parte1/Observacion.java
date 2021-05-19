@@ -27,7 +27,8 @@ public class Observacion {
     private ConcurrentLinkedQueue<Integer[]> problematicos; //guardará el puesto y el id de cada paciente que sufra una reacción
     
     
-    Observacion(Recepcion recepcion, ConcurrentLinkedQueue<Integer[]> problematicos){
+    Observacion(Recepcion recepcion, ConcurrentLinkedQueue<Integer[]> problematicos, escrituraSegura escrituraS){
+        this.escrituraS = escrituraS;
         this.problematicos = problematicos;
         this.recepcion = recepcion;
         for(int l = 0; l<20 ; l++){ //Inicianizamos los puestos, todos a 0

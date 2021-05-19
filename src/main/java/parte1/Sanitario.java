@@ -27,7 +27,8 @@ public class Sanitario extends Thread{
     private Observacion salaObservacion; 
     
     Sanitario(Recepcion recepcion, int id, ConcurrentLinkedQueue<Integer[]> problematicos, 
-            Observacion salaObservacion){
+            Observacion salaObservacion, escrituraSegura escrituraS){
+        this.escrituraS = escrituraS;
         this.problematicos = problematicos;
         tiempoDormir= ( rand.nextInt(3) + 1 ) * 1000;
         this.recepcion = recepcion;

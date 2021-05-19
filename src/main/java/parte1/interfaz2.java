@@ -89,6 +89,7 @@ public class interfaz2 extends javax.swing.JPanel {
         puesto10ObservacionTextField = new javax.swing.JTextField();
         puesto10ObservacionLabel = new javax.swing.JLabel();
         puesto11ObservacionTextField = new javax.swing.JTextField();
+        puesto11ObservacionLabel = new javax.swing.JLabel();
         puesto12ObservacionTextField = new javax.swing.JTextField();
         puesto12ObservacionLabel = new javax.swing.JLabel();
         puesto13ObservacionTextField = new javax.swing.JTextField();
@@ -107,7 +108,6 @@ public class interfaz2 extends javax.swing.JPanel {
         puesto19ObservacionLabel = new javax.swing.JLabel();
         puesto20ObservacionTextField = new javax.swing.JTextField();
         puesto20ObservacionLabel = new javax.swing.JLabel();
-        puesto11ObservacionLabel = new javax.swing.JLabel();
 
         salaDescansoPanel.setBackground(new java.awt.Color(153, 153, 153));
 
@@ -578,6 +578,10 @@ public class interfaz2 extends javax.swing.JPanel {
             }
         });
 
+        puesto11ObservacionLabel.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        puesto11ObservacionLabel.setForeground(new java.awt.Color(0, 0, 0));
+        puesto11ObservacionLabel.setText("Puesto 11");
+
         puesto12ObservacionTextField.setBackground(new java.awt.Color(255, 255, 255));
         puesto12ObservacionTextField.setText("jTextField2");
         puesto12ObservacionTextField.addActionListener(new java.awt.event.ActionListener() {
@@ -685,10 +689,6 @@ public class interfaz2 extends javax.swing.JPanel {
         puesto20ObservacionLabel.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         puesto20ObservacionLabel.setForeground(new java.awt.Color(0, 0, 0));
         puesto20ObservacionLabel.setText("Puesto 20 ");
-
-        puesto11ObservacionLabel.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        puesto11ObservacionLabel.setForeground(new java.awt.Color(0, 0, 0));
-        puesto11ObservacionLabel.setText("Puesto 11");
 
         javax.swing.GroupLayout salaObservacionPanelLayout = new javax.swing.GroupLayout(salaObservacionPanel);
         salaObservacionPanel.setLayout(salaObservacionPanelLayout);

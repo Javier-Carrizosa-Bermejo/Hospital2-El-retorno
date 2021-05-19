@@ -18,7 +18,8 @@ public class Auxiliar2 extends Thread {
     private Recepcion recepcion;
     public Semaphore vacuna = new Semaphore(0);
 
-    Auxiliar2(Recepcion recepcion) {
+    Auxiliar2(Recepcion recepcion, escrituraSegura escrituraS) {
+        this.escrituraS = escrituraS;
         this.recepcion = recepcion;
     }
 

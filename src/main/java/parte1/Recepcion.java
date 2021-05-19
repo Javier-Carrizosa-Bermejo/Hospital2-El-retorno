@@ -16,21 +16,22 @@ import java.util.concurrent.locks.ReentrantLock;
  */
 public class Recepcion {
     private escrituraSegura escrituraS;
+    public Semaphore vacuna = new Semaphore(0);
+    public int vacunas = 0;
     private boolean[] listaSalas = new boolean[10], salasMedicos = new boolean[10];
     private PuestoVacunacion[] puestos; //lista de puestos, 
     private Lock libre = new ReentrantLock(), medicos = new ReentrantLock();
-    private Semaphore vacuna = new Semaphore(0);
-    public int vacunas = 0;
     private Condition ningunLibre = libre.newCondition(), ningunPuesto = libre.newCondition();
     private Observacion salaObservacion;
     private int ocupados = 0; //mantiene la cuenta de cuantos pacientes han pasado a vacunarse
     
     
-    Recepcion(PuestoVacunacion[] puestos, Observacion salaObservacion){
+    Recepcion(PuestoVacunacion[] puestos, Observacion salaObservacion, escrituraSegura escrituraS){
         for(int i = 0; i < 10;i++){
             listaSalas[i] = false; //false si la sala está ocupada, true si está disponible. Ninguna sala está disponible al comienzo
             salasMedicos[i] = false;
         }
+        this.escrituraS = escrituraS;
         this.puestos = puestos;
         this.salaObservacion = salaObservacion;
         
@@ -116,12 +117,7 @@ public class Recepcion {
                     posicion++;
                     
                 }
-                else{
-                    vacuna.acquire();
-                    vacunas --;
-                    String var1 = Integer.toString(vacunas);
-                    escrituraS.escritura(14, var1, "", "");
-                    //System.out.println("El medico ha cogido una vacuna. Quedan " + vacunas + " vacunas disponibles.");
+                else{                   
                     encontrado = true;
                     salasMedicos[posicion] = true;
                 }

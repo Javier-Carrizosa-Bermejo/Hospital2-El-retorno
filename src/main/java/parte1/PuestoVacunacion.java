@@ -7,6 +7,7 @@ package parte1;
 
 import static java.lang.Thread.sleep;
 import java.util.Random;
+import java.util.concurrent.Semaphore;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -23,7 +24,8 @@ public class PuestoVacunacion {
     private int pacientes = 0, tiempo, id, medico_id;
     private Recepcion recepcion;
     
-    PuestoVacunacion(int id, Recepcion recepcion){
+    PuestoVacunacion(int id, Recepcion recepcion, escrituraSegura escrituraS){
+        this.escrituraS = escrituraS;
         this.id = id; //identificador de la sala
         this.recepcion = recepcion;
         
@@ -34,13 +36,18 @@ public class PuestoVacunacion {
         try {
            
             pacientes ++;
+            recepcion.vacuna.acquire();
+            recepcion.vacunas --;
+            String var1 = Integer.toString(recepcion.vacunas);
+            escrituraS.escritura(14, var1, "", "");
+            //System.out.println("El medico ha cogido una vacuna. Quedan " + vacunas + " vacunas disponibles.");
             tiempo = (rand.nextInt(3) + 3) * 1000;
             sleep(tiempo); //tiempo que tarda en vacunarse
             
             if(pacientes >= 15)
             {
                 //EL MEDICO ABANDONA CON LO QUE LA SALA NO QUEDA LIBRE 
-                String var1 = Integer.toString(this.id);
+                var1 = Integer.toString(this.id);
                 escrituraS.escritura(6, var1, "", "");
                 //System.out.println("Se han vacunado 15 pacientes, " + this.id + " procede a cerrarse");
                 enEspera.signal();

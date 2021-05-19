@@ -23,7 +23,8 @@ public class Auxiliar1 extends Thread {
     Paciente persona;
     Random rand = new Random();
     
-    Auxiliar1(Recepcion recepcion, LinkedBlockingQueue<Paciente> pacientes){
+    Auxiliar1(Recepcion recepcion, LinkedBlockingQueue<Paciente> pacientes, escrituraSegura escrituraS){
+        this.escrituraS = escrituraS;
         this.recepcion = recepcion;
         this.pacientes = pacientes;
     }
