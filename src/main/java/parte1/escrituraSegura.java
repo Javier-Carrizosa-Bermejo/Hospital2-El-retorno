@@ -17,7 +17,7 @@ import java.time.format.DateTimeFormatter;
  */
 public class escrituraSegura {
     private int mensaje, contador;
-    File generosF = new File("D:/Registro/evolucionHospital.txt");
+    File generosF = new File("evolucionHospital.txt");
     PrintWriter pw = new PrintWriter(generosF);
     DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yy/MM/dd HH:mm:ss.SSS");
    
