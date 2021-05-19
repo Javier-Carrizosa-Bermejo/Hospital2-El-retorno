@@ -85,6 +85,7 @@ public class escrituraSegura {
                     break;
             }
             if (contador == 2000){
+                System.out.println("Se cierra el archivo");
                 pw.close();
             }            
             
