@@ -22,21 +22,26 @@ public class Auxiliar1 extends Thread {
     private Recepcion recepcion;
     Paciente persona;
     Random rand = new Random();
+    Registro registro;
     
-    Auxiliar1(Recepcion recepcion, LinkedBlockingQueue<Paciente> pacientes, escrituraSegura escrituraS){
+    Auxiliar1(Recepcion recepcion, LinkedBlockingQueue<Paciente> pacientes, escrituraSegura escrituraS, Registro registro){
         this.escrituraS = escrituraS;
         this.recepcion = recepcion;
         this.pacientes = pacientes;
+        this.registro = registro;
     }
     
     @Override
     public void run(){
         while(true){
             try {
+                registro.auxiliarTrabaja();
                 String var1,var2,var3;
                 persona = pacientes.take(); //coje el primer elemento, si no se queda bloquado hasta que haya
+                registro.fueraPacienteCola();
                 /*tiempo = ((rand.nextInt(2) + 1)/2) * 1000; 
                 sleep(tiempo);*/ //tiempo de preparación
+                registro.atendidoEnRecepcion(persona.getID());
                 sleep((int) ((Math.random() * 6) + 5) * 100);                
                 if(persona.getCitado()){//Si está citado....
                     PuestoVacunacion libre = recepcion.salaLibre(); //Busca un puesto de vacunación, se bloquea hasta que lo encuentra
@@ -48,6 +53,7 @@ public class Auxiliar1 extends Thread {
                             + " procede a vacunarse en la sala " + libre.getID()
                             + " por " + libre.get_med_id());*/
                     persona.setPuesto(libre); //le da el puesto al paciente
+                    registro.pacienteSeVacuna(persona.getID(), libre.getID());
                     persona.start();  //el paciente inicia su rutina
                 }
                 else{
@@ -61,6 +67,7 @@ public class Auxiliar1 extends Thread {
                 atendidos++;
                 if(atendidos >= 10){ //Comprueba si le toca descansar
                     atendidos = 0;
+                    registro.descansa();
                     tiempo = (rand.nextInt(3) + 3) * 1000;
                     sleep(tiempo);
                 }

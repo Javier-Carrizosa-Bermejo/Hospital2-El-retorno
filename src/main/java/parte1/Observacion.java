@@ -25,15 +25,16 @@ public class Observacion {
     Semaphore reaccion = new Semaphore(0, true); //Bloqueará a los pacientes que sufran una reacción. 
     private Recepcion recepcion;
     private ConcurrentLinkedQueue<Integer[]> problematicos; //guardará el puesto y el id de cada paciente que sufra una reacción
+    private Registro registro;
     
-    
-    Observacion(Recepcion recepcion, ConcurrentLinkedQueue<Integer[]> problematicos, escrituraSegura escrituraS){
+    Observacion(Recepcion recepcion, ConcurrentLinkedQueue<Integer[]> problematicos, escrituraSegura escrituraS, Registro registro){
         this.escrituraS = escrituraS;
         this.problematicos = problematicos;
         this.recepcion = recepcion;
         for(int l = 0; l<20 ; l++){ //Inicianizamos los puestos, todos a 0
             salasObservacion[l] = new AtomicBoolean(false);
         }
+        this.registro = registro;
     }
     
     Observacion(){ // Sin este constructor no se puede inicializar el programa
@@ -55,6 +56,7 @@ public class Observacion {
             }
             
         }
+        registro.pacienteEntraObersvacion(posicion, id_paciente);
         if(probabilidad < 5){
             Integer[] conReaccion = {id_paciente, posicion}; 
             problematicos.add(conReaccion); //se añade el id del paciente con su puesto
@@ -69,6 +71,7 @@ public class Observacion {
         String var1 = Integer.toString(id_paciente);
         String var2 = Integer.toString(posicion);
         escrituraS.escritura(4, var1, var2, "");
+        registro.pacienteSaleDeObersvacion(posicion);
         //System.out.println(id_paciente + " Se marcha a casa del puesto" + posicion);
         
 

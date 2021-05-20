@@ -23,18 +23,19 @@ public class PuestoVacunacion {
     private Condition enEspera = turno.newCondition();
     private int pacientes = 0, tiempo, id, medico_id;
     private Recepcion recepcion;
+    private Registro registro;
     
-    PuestoVacunacion(int id, Recepcion recepcion, escrituraSegura escrituraS){
+    PuestoVacunacion(int id, Recepcion recepcion, escrituraSegura escrituraS, Registro registro){
         this.escrituraS = escrituraS;
         this.id = id; //identificador de la sala
         this.recepcion = recepcion;
+        this.registro = registro;
         
     }
     
     public void vacunarse() throws InterruptedException{
         turno.lock();
         try {
-           
             pacientes ++;
             recepcion.vacuna.acquire();
             recepcion.vacunas --;
@@ -57,6 +58,7 @@ public class PuestoVacunacion {
                 //LIBERAR SALA 
                 recepcion.liberarSala(id);
             }
+            registro.pacienteSaleDeVacunacion(this.id);
             
         } finally {
             turno.unlock();

@@ -25,6 +25,7 @@ public class Registro {
 
     public void nuevoPacienteCola(int id){
         informacion.get(0).add(String.valueOf(id));
+        
     }
     
     public void fueraPacienteCola(){
@@ -99,7 +100,7 @@ public class Registro {
         informacion.get(16 + puestos).add(String.valueOf(id_med));
     }
     
-    public void MedicoMarchaDeObersvacion(int puestos, int id_med){
+    public void MedicoMarchaDeObersvacion(int puestos){
         informacion.get(16 + puestos).remove(1);
     }
     
