@@ -58,7 +58,6 @@ public class Prueba {
         
         for(int k = 0; k < 200; k ++){
             Paciente sara = new Paciente(k, salaObservacion);
-            System.out.println("paciente " + k);
             registro.nuevoPacienteCola(k);
             sleep(1000);
             pacientes.offer(sara);

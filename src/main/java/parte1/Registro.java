@@ -46,7 +46,7 @@ public class Registro {
     }
     
     public void descansa(){
-        informacion.get(2).remove("Auxiliar1");
+        informacion.get(2).remove(0);
         informacion.get(3).add("Auxiliar1");
     }
     

@@ -994,5 +994,17 @@ public class InterfazHospital extends javax.swing.JFrame {
     public void colaPacientesModificar(String texto){
         colaPacientes.setText(texto);
     }
+    
+    public void pacienteAtendidoModificar(String texto){
+        pacienteAtendido.setText(texto);
+    }
+    
+    public void salaDescansoModificar(String texto){
+        salaDescanso.setText(texto);
+    }
+    
+    public void modificarAuxiliar(String texto){
+        auxiliarTrabajando.setText(texto);
+    }
 
 }

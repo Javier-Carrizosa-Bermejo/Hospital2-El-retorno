@@ -43,11 +43,10 @@ public class Cliente  extends Thread{
             
             entrada = new ObjectInputStream(cliente.getInputStream()); //Creamos los canales de E/S
             while(contador < 200){
-                System.out.println("Conexion establecida -- cliente");
                 //salida.writeObject((Integer) contador); //Enviamos un mensaje al servidor
                 informacion = (ConcurrentHashMap<Integer, ArrayList<String>>) entrada.readObject(); //Leemos la respuesta
                 contador++;
-                System.out.println(informacion.get(0));
+                System.out.println(informacion.get(2));
                 picasso.setInfo(informacion);
                 
             }

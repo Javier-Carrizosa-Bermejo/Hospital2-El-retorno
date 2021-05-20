@@ -33,9 +33,9 @@ public class Auxiliar1 extends Thread {
     
     @Override
     public void run(){
+        registro.auxiliarTrabaja();
         while(true){
             try {
-                registro.auxiliarTrabaja();
                 String var1,var2,var3;
                 persona = pacientes.take(); //coje el primer elemento, si no se queda bloquado hasta que haya
                 registro.fueraPacienteCola();
@@ -53,15 +53,18 @@ public class Auxiliar1 extends Thread {
                             + " procede a vacunarse en la sala " + libre.getID()
                             + " por " + libre.get_med_id());*/
                     persona.setPuesto(libre); //le da el puesto al paciente
+                    registro.fueraDeRecepcion();
                     registro.pacienteSeVacuna(persona.getID(), libre.getID());
                     persona.start();  //el paciente inicia su rutina
                 }
                 else{
                     //NO ESTÁ CITADO
                     var1 = Integer.toString(persona.getID());
+                    System.out.println(persona.getID() + "no esta citado");
                     escrituraS.escritura(1, var1, "", "");
                     //System.out.println("El paciente no está citado para hoy: " + persona.getID());
                     persona.setPuesto(null); //se le asigna un puesto nulo
+                    registro.fueraDeRecepcion();
                     persona.start();
                 }
                 atendidos++;
@@ -70,6 +73,7 @@ public class Auxiliar1 extends Thread {
                     registro.descansa();
                     tiempo = (rand.nextInt(3) + 3) * 1000;
                     sleep(tiempo);
+                    registro.auxiliarTrabaja();
                 }
             } catch (InterruptedException ex) {
                 Logger.getLogger(Auxiliar1.class.getName()).log(Level.SEVERE, null, ex);

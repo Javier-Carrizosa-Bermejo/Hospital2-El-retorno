@@ -44,17 +44,11 @@ public class Servidor extends Thread {
 
         try {
             servidor = new ServerSocket(5000); //Creamos un ServerSocket en el Puerto 5000ç
-            System.out.println("Esperando conexion");
             conexion = servidor.accept(); //Esperamos una conexión
-            System.out.println("Conexion recibida");
             entrada = new ObjectInputStream(conexion.getInputStream()); //Abrimos los canales de E/S
-            System.out.println("Hasta aqui si que si no ? llego ?");
             salida = new ObjectOutputStream(conexion.getOutputStream());
-            System.out.println("Hasta aqui llego ?");
             while(contador < 200){
-                System.out.println("Conexion establecida -- servidor");
                 informacion = registro.getInformacion(); //Leemos el mensaje del cliente
-                System.out.println(informacion.get(0) + " Esto de aqui va bien");
                 salida.writeObject(informacion);
                 sleep(1000);
                 contador ++;

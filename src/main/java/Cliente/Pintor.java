@@ -44,12 +44,13 @@ public class Pintor extends Thread{
     public void pintar(){
         cerradura.lock();
         try {
-            if(informacion == null){
-                System.out.println("no hay info");
+            if(informacion != null){
+               colaPacientes(informacion.get(0));
+               pacienteAtendido(informacion.get(1));
+               salaDescanso(informacion.get(3));
+               puestoDelAuxiliar(informacion.get(2));
             }
-            else{
-                interfaz.colaPacientesModificar(informacion.get(0).toString());
-            }
+
         } finally {
             cerradura.unlock();
         }
@@ -64,4 +65,80 @@ public class Pintor extends Thread{
         }
         
     }
+    
+    public void colaPacientes(ArrayList<String> pacientes){
+        String textoColaPacientes = " ";
+        String paciente;
+        for(int j = 0; j < pacientes.size(); j++){
+            
+            if(pacientes.get(j).length() == 1){
+                paciente = "P000" + pacientes.get(j);
+            }
+            else if(pacientes.get(j).length() == 2){
+                paciente = "P00" + pacientes.get(j);
+            }
+            else if(pacientes.get(j).length() == 3){
+                paciente = "P0" + pacientes.get(j);
+            }
+            else {
+                paciente = "P" + pacientes.get(j);
+            }
+            textoColaPacientes = textoColaPacientes + paciente + " ";
+        }
+        interfaz.colaPacientesModificar(textoColaPacientes);
+        
+    }
+    
+    public void pacienteAtendido(ArrayList<String> pacientes){
+        String texto = " ";
+        String paciente;
+        for(int j = 0; j < pacientes.size(); j++){
+            if(pacientes.get(j).length() == 1){
+                paciente = "P000" + pacientes.get(j);
+            }
+            else if(pacientes.get(j).length() == 2){
+                paciente = "P00" + pacientes.get(j);
+            }
+            else if(pacientes.get(j).length() == 3){
+                paciente = "P0" + pacientes.get(j);
+            }
+            else {
+                paciente = "P" + pacientes.get(j);
+            }
+            texto= texto+ paciente + " ";
+        }
+        interfaz.pacienteAtendidoModificar(texto);
+    }
+    
+    public void salaDescanso(ArrayList<String> durmientes){
+        String texto = " ";
+        String persona;
+        for(int j = 0; j < durmientes.size(); j++){
+            if(durmientes.get(j).length() == 1){
+                persona = "S0" + durmientes.get(j);
+            }
+            else if(durmientes.get(j).length() == 2){
+                persona = "S" + durmientes.get(j);
+            }
+            
+            else {
+                persona =  durmientes.get(j);
+            }
+            texto= texto + persona + " ";
+        }
+        interfaz.salaDescansoModificar(texto);
+    }
+    
+    public void puestoDelAuxiliar(ArrayList<String> elAuxiliar){
+        String texto = " ";
+        String persona;
+        for(int j = 0; j < elAuxiliar.size(); j++){
+            texto= "Auxiliar1";
+        }
+        
+        interfaz.modificarAuxiliar(texto);
+    }
+    
+    
+    
 }
