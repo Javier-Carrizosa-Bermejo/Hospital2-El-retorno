@@ -22,6 +22,7 @@ public class Prueba {
     public static void main(String[] args) throws InterruptedException, FileNotFoundException {
         // TODO code application logic here
         escrituraSegura escrituraS = new escrituraSegura(16);
+        escrituraS.borrarArchivo(escrituraSegura.path.toString());
         LinkedBlockingQueue<Paciente> pacientes = new LinkedBlockingQueue<>();
         ConcurrentLinkedQueue<Integer[]> reaccionesObservacion = new ConcurrentLinkedQueue<Integer[]>();
         PuestoVacunacion[] puestos = new PuestoVacunacion[10];

@@ -8,6 +8,8 @@ package parte1;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -17,6 +19,10 @@ import java.time.format.DateTimeFormatter;
  */
 public class escrituraSegura {
     private int mensaje, contador;
+    //generosF.delete();
+    static String sep = File.separator;
+    static Path path = Paths.get("evolucionHospital.txt");
+    //File generosF = new File(sep + "temp" + sep + "evolucionHospital.txt");
     File generosF = new File("evolucionHospital.txt");
     PrintWriter pw = new PrintWriter(generosF);
     DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yy/MM/dd HH:mm:ss.SSS");
@@ -25,7 +31,15 @@ public class escrituraSegura {
        this.mensaje = mensaje;
        PrintWriter pw = new PrintWriter(generosF);
    } 
-    
+   
+   public static void borrarArchivo(String path){
+       File file = new File(path);
+       if(file.delete()){
+           System.out.println("Se elimino el fichero.");
+       }
+            
+       
+   }
     
    public void escritura(int mensaje, String var1, String var2, String var3) {
         try {           
