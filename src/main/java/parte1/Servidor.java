@@ -47,16 +47,15 @@ public class Servidor extends Thread {
             conexion = servidor.accept(); //Esperamos una conexión
             entrada = new ObjectInputStream(conexion.getInputStream()); //Abrimos los canales de E/S
             salida = new ObjectOutputStream(conexion.getOutputStream());
-            while(contador < 200){
+            while(contador < 300){
                 informacion = registro.getInformacion(); //Leemos el mensaje del cliente
                 salida.writeObject(informacion);
                 sleep(1000);
                 contador ++;
                 salida.reset();
             }
-            
-            entrada.close(); //Cerramos los flujos de entrada y salida
             salida.close();
+            entrada.close(); //Cerramos los flujos de entrada y salida
             conexion.close(); //Y cerramos la conexión
             
         } catch (IOException e) { } catch (InterruptedException ex) {

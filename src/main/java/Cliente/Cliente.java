@@ -42,7 +42,7 @@ public class Cliente  extends Thread{
             salida = new ObjectOutputStream(cliente.getOutputStream());
             
             entrada = new ObjectInputStream(cliente.getInputStream()); //Creamos los canales de E/S
-            while(contador < 200){
+            while(contador < 300){
                 //salida.writeObject((Integer) contador); //Enviamos un mensaje al servidor
                 informacion = (ConcurrentHashMap<Integer, ArrayList<String>>) entrada.readObject(); //Leemos la respuesta
                 contador++;

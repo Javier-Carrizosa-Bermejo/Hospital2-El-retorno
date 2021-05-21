@@ -14,8 +14,20 @@ public class InterfazHospital extends javax.swing.JFrame {
     /**
      * Creates new form InterfazHospital
      */
+    private javax.swing.JTextField[] puestosCuadroTexto = new javax.swing.JTextField[10]; 
+    
     public InterfazHospital() {
         initComponents();
+        puestosCuadroTexto[0] = puestoVacunacion1;
+        puestosCuadroTexto[1] = puestoVacunacion2;
+        puestosCuadroTexto[2] = puestoVacunacion3;
+        puestosCuadroTexto[3] = puestoVacunacion4;
+        puestosCuadroTexto[4] = puestoVacunacion5;
+        puestosCuadroTexto[5] = puestoVacunacion6;
+        puestosCuadroTexto[6] = puestoVacunacion7;
+        puestosCuadroTexto[7] = puestoVacunacion8;
+        puestosCuadroTexto[8] = puestoVacunacion9;
+        puestosCuadroTexto[9] = puestoVacunacion10;
     }
 
     /**
@@ -991,6 +1003,8 @@ public class InterfazHospital extends javax.swing.JFrame {
     private javax.swing.JTextField vacunasDispoVacunacionTextField;
     // End of variables declaration//GEN-END:variables
     
+    
+    
     public void colaPacientesModificar(String texto){
         colaPacientes.setText(texto);
     }
@@ -1006,5 +1020,12 @@ public class InterfazHospital extends javax.swing.JFrame {
     public void modificarAuxiliar(String texto){
         auxiliarTrabajando.setText(texto);
     }
+    
+    
+    public void pintarVacunacion(String texto, int nmero){
+        puestosCuadroTexto[nmero-4].setText(texto);
+        
+    }
+    
 
 }

@@ -49,6 +49,7 @@ public class Pintor extends Thread{
                pacienteAtendido(informacion.get(1));
                salaDescanso(informacion.get(3));
                puestoDelAuxiliar(informacion.get(2));
+               puestosDeVacunacion();
             }
 
         } finally {
@@ -139,6 +140,48 @@ public class Pintor extends Thread{
         interfaz.modificarAuxiliar(texto);
     }
     
+    
+    public void puestosDeVacunacion(){
+        for(int i = 4; i < 14; i++){
+            interfaz.pintarVacunacion(stringPuestoVacunacion(informacion.get(i)), i);
+        }
+    }
+    
+    public String stringPuestoVacunacion(ArrayList<String> puesto){
+        String texto = " ";
+        if(puesto.size() == 1){
+            if(puesto.get(0).length() == 1){
+                texto = "S0" + puesto.get(0);
+            }
+            else if (puesto.get(0).length() == 2){
+                texto = "S" + puesto.get(1);
+            }
+        }
+        else if(puesto.size() == 2){
+            if(puesto.get(0).length() == 1){
+                texto = "S0" + puesto.get(0);
+            }
+            else if (puesto.get(0).length() == 2){
+                texto = "S" + puesto.get(1);
+            }
+            
+            if(puesto.get(1).length() == 1){
+                texto = texto + "P000" + puesto.get(1);
+            }
+            else if(puesto.get(1).length() == 2){
+                texto = texto + "P00" + puesto.get(1);
+            }
+            else if(puesto.get(1).length() == 3){
+                texto = texto + "P0" + puesto.get(1);
+            }
+            else if(puesto.get(1).length() == 4){
+                texto = texto + "P" + puesto.get(1);
+            }
+        }
+        
+        return texto;
+        
+    }    
     
     
 }
