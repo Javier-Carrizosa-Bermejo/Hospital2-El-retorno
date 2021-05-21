@@ -82,9 +82,9 @@
                               <Component id="pacienteAtendido" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="83" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="auxiliarRecepcionLabel" max="32767" attributes="0"/>
-                              <Component id="auxiliarTrabajando" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="auxiliarRecepcionLabel" min="-2" max="-2" attributes="0"/>
+                              <Component id="auxiliarTrabajando" min="-2" pref="64" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Component id="colaEsperaRecepcionLabel" alignment="0" min="-2" pref="104" max="-2" attributes="0"/>
@@ -127,14 +127,8 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="pacienteAtendido">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="pacienteAtendidoActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="auxiliarTrabajando">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="auxiliarTrabajandoActionPerformed"/>
-          </Events>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">
           <AuxValues>
@@ -290,27 +284,36 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="puestoVacunacion5" alignment="0" pref="94" max="32767" attributes="0"/>
-                              <Component id="puestoVacunacion10" alignment="0" max="32767" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="auxiliarVacunacionTextField" alignment="0" max="32767" attributes="0"/>
-                              <Component id="vacunasDispoVacunacionTextField" alignment="0" pref="0" max="32767" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="256" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
                           <Component id="puesto5VacunacionLabel" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                           <Component id="auxiliarVacunacionLabel" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="289" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="puesto10VacunacionLabel" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="vacunasDispoVacunacionLabel" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="puestoVacunacion5" alignment="0" pref="94" max="32767" attributes="0"/>
+                                      <Component id="puestoVacunacion10" alignment="0" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <EmptySpace min="-2" pref="228" max="-2" attributes="0"/>
+                                          <Component id="auxiliarVacunacionTextField" max="32767" attributes="0"/>
+                                          <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" attributes="0">
+                                          <EmptySpace min="-2" pref="230" max="-2" attributes="0"/>
+                                          <Component id="vacunasDisponiblesTextField" max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="puesto10VacunacionLabel" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace pref="267" max="32767" attributes="0"/>
+                                  <Component id="vacunasDispoVacunacionLabel" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
                           <EmptySpace min="-2" pref="211" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -356,7 +359,7 @@
                       <Component id="puestoVacunacion8" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                       <Component id="puestoVacunacion9" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                       <Component id="puestoVacunacion10" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                      <Component id="vacunasDispoVacunacionTextField" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                      <Component id="vacunasDisponiblesTextField" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
               </Group>
@@ -373,9 +376,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="puestoVacunacion1">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="puestoVacunacion1ActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="puesto1VacunacionLabel">
           <Properties>
@@ -386,9 +386,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="puestoVacunacion2">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="puestoVacunacion2ActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="puesto2VacunacionLabel">
           <Properties>
@@ -399,9 +396,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="puestoVacunacion3">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="puestoVacunacion3ActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="puesto3VacunacionLabel">
           <Properties>
@@ -412,9 +406,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="puestoVacunacion4">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="puestoVacunacion4ActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="puesto4VacunacionLabel">
           <Properties>
@@ -425,9 +416,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="puestoVacunacion5">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="puestoVacunacion5ActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="puesto5VacunacionLabel">
           <Properties>
@@ -488,12 +476,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="auxiliarVacunacionTextField">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField4"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="auxiliarVacunacionTextFieldActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="auxiliarVacunacionLabel">
           <Properties>
@@ -503,10 +485,7 @@
             <Property name="text" type="java.lang.String" value="Auxiliar"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="vacunasDispoVacunacionTextField">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField10"/>
-          </Properties>
+        <Component class="javax.swing.JTextField" name="vacunasDisponiblesTextField">
         </Component>
         <Component class="javax.swing.JLabel" name="vacunasDispoVacunacionLabel">
           <Properties>
@@ -717,9 +696,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="puestoObservacion1">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="puestoObservacion1ActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="puesto1ObservacionLabel">
           <Properties>
@@ -730,9 +706,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="puestoObservacion2">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="puestoObservacion2ActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="puesto2ObservacionLabel">
           <Properties>
@@ -743,9 +716,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="puestoObservacion3">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="puestoObservacion3ActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="puesto3ObservacionLabel">
           <Properties>
@@ -756,9 +726,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="puestoObservacion4">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="puestoObservacion4ActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="puesto4ObservacionLabel">
           <Properties>
@@ -769,9 +736,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="puestoObservacion5">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="puestoObservacion5ActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="puesto5ObservacionLabel">
           <Properties>
@@ -782,9 +746,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="puestoObservacion6">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="puestoObservacion6ActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="puesto6ObservacionLabel">
           <Properties>
@@ -795,9 +756,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="puestoObservacion7">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="puestoObservacion7ActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="puesto7ObservacionLabel">
           <Properties>
@@ -808,9 +766,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="puestoObservacion8">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="puestoObservacion8ActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="puesto8ObservacionLabel">
           <Properties>
@@ -821,9 +776,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="puestoObservacion9">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="puestoObservacion9ActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="puesto9ObservacionLabel">
           <Properties>
@@ -834,9 +786,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="puestoObservacion10">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="puestoObservacion10ActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="puesto10ObservacionLabel">
           <Properties>
@@ -847,9 +796,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="puestoObservacion11">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="puestoObservacion11ActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="puesto11ObservacionLabel">
           <Properties>
@@ -860,9 +806,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="puestoObservacion12">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="puestoObservacion12ActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="puesto12ObservacionLabel">
           <Properties>
@@ -873,9 +816,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="puestoObservacion13">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="puestoObservacion13ActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="puesto13ObservacionLabel">
           <Properties>
@@ -886,9 +826,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="puestoObservacion14">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="puestoObservacion14ActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="puesto14ObservacionLabel">
           <Properties>
@@ -899,9 +836,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="puestoObservacion15">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="puestoObservacion15ActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="puesto15ObservacionLabel">
           <Properties>
@@ -912,9 +846,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="puestoObservacion16">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="puestoObservacion16ActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="puesto16ObservacionLabel">
           <Properties>
@@ -925,9 +856,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="puestoObservacion17">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="puestoObservacion17ActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="puesto17ObservacionLabel">
           <Properties>
@@ -938,9 +866,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="puestoObservacion18">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="puestoObservacion18ActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="puesto18ObservacionLabel">
           <Properties>
@@ -951,9 +876,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="puestoObservacion19">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="puestoObservacion19ActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="puesto19ObservacionLabel">
           <Properties>
@@ -964,9 +886,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="puestoObservacion20">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="puestoObservacion20ActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="puesto20ObservacionLabel">
           <Properties>

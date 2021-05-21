@@ -29,7 +29,7 @@ public class Prueba {
         ConcurrentLinkedQueue<Integer[]> reaccionesObservacion = new ConcurrentLinkedQueue<Integer[]>();
         PuestoVacunacion[] puestos = new PuestoVacunacion[10];
         Observacion salaObservacion = new Observacion();
-        Recepcion recepcion = new Recepcion(puestos, salaObservacion, escrituraS);
+        Recepcion recepcion = new Recepcion(puestos, salaObservacion, escrituraS, registro);
         salaObservacion = new Observacion(recepcion, reaccionesObservacion, escrituraS, registro);
         
         Servidor server = new Servidor(registro);
@@ -37,7 +37,7 @@ public class Prueba {
         Cliente cliente = new Cliente();
         cliente.start();
         
-        Auxiliar2 javi = new Auxiliar2(recepcion,escrituraS);
+        Auxiliar2 javi = new Auxiliar2(recepcion, escrituraS, registro);
         javi.start();
         
         for(int j = 0; j < 10; j++){

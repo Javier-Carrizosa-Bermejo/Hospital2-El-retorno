@@ -84,7 +84,12 @@ public class Registro {
     }
     
     public void seModificanVacunas(int vacunas){
-        informacion.get(15).add(String.valueOf(vacunas));
+        if(informacion.get(15).size() == 0){
+            informacion.get(15).add(String.valueOf(vacunas));
+        }
+        else{
+            informacion.get(15).set(0, String.valueOf(vacunas));
+        }
         
     }
     

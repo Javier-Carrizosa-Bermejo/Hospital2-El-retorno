@@ -50,6 +50,9 @@ public class Pintor extends Thread{
                salaDescanso(informacion.get(3));
                puestoDelAuxiliar(informacion.get(2));
                puestosDeVacunacion();
+               puestosDeObservacion();
+               puestoDelAuxiliar2(informacion.get(14));
+               vacunasDisponibles(informacion.get(15));
             }
 
         } finally {
@@ -132,7 +135,6 @@ public class Pintor extends Thread{
     
     public void puestoDelAuxiliar(ArrayList<String> elAuxiliar){
         String texto = " ";
-        String persona;
         for(int j = 0; j < elAuxiliar.size(); j++){
             texto= "Auxiliar1";
         }
@@ -140,6 +142,23 @@ public class Pintor extends Thread{
         interfaz.modificarAuxiliar(texto);
     }
     
+    public void puestoDelAuxiliar2(ArrayList<String> elAuxiliar){
+        String texto = " ";
+        for(int j = 0; j < elAuxiliar.size(); j++){
+            texto= "Auxiliar2";
+        }
+        
+        interfaz.modificarAuxiliar2(texto);
+    }
+    
+    public void vacunasDisponibles(ArrayList<String> elAuxiliar){
+        String texto = " ";
+        for(int j = 0; j < elAuxiliar.size(); j++){
+            texto= elAuxiliar.get(j);
+        }
+        
+        interfaz.setVacunasDisponibles(texto);
+    }
     
     public void puestosDeVacunacion(){
         for(int i = 4; i < 14; i++){
@@ -154,7 +173,7 @@ public class Pintor extends Thread{
                 texto = "S0" + puesto.get(0);
             }
             else if (puesto.get(0).length() == 2){
-                texto = "S" + puesto.get(1);
+                texto = "S" + puesto.get(0);
             }
         }
         else if(puesto.size() == 2){
@@ -162,26 +181,75 @@ public class Pintor extends Thread{
                 texto = "S0" + puesto.get(0);
             }
             else if (puesto.get(0).length() == 2){
-                texto = "S" + puesto.get(1);
+                texto = "S" + puesto.get(0);
             }
             
             if(puesto.get(1).length() == 1){
-                texto = texto + "P000" + puesto.get(1);
+                texto = texto + " P000" + puesto.get(1);
             }
             else if(puesto.get(1).length() == 2){
-                texto = texto + "P00" + puesto.get(1);
+                texto = texto + " P00" + puesto.get(1);
             }
             else if(puesto.get(1).length() == 3){
-                texto = texto + "P0" + puesto.get(1);
+                texto = texto + " P0" + puesto.get(1);
             }
             else if(puesto.get(1).length() == 4){
-                texto = texto + "P" + puesto.get(1);
+                texto = texto + " P" + puesto.get(1);
             }
         }
         
         return texto;
         
-    }    
+    }
+
+    public void puestosDeObservacion(){
+        for(int i = 16; i < 36; i++){
+            interfaz.pintarObservacion(stringPuestoObservacion(informacion.get(i)), i);
+        }
+    }
+    
+    
+    public String stringPuestoObservacion(ArrayList<String> puesto){
+        String texto = " ";
+        if(puesto.size() == 1){
+            if(puesto.get(0).length() == 1){
+                texto = "P000" + puesto.get(0);
+            }
+            else if(puesto.get(0).length() == 2){
+                texto = "P00" + puesto.get(0);
+            }
+            else if(puesto.get(0).length() == 3){
+                texto = "P0" + puesto.get(0);
+            }
+            else if(puesto.get(0).length() == 4){
+                texto = "P" + puesto.get(0);
+            }
+        }
+        else if(puesto.size() == 2){
+            if(puesto.get(0).length() == 1){
+                texto = "P000" + puesto.get(0);
+            }
+            else if(puesto.get(0).length() == 2){
+                texto = "P00" + puesto.get(0);
+            }
+            else if(puesto.get(0).length() == 3){
+                texto = "P0" + puesto.get(0);
+            }
+            else if(puesto.get(0).length() == 4){
+                texto = "P" + puesto.get(0);
+            }
+            
+            if(puesto.get(1).length() == 1){
+                texto = texto + " S0" + puesto.get(1);
+            }
+            else if (puesto.get(1).length() == 2){
+                texto = texto + " S" + puesto.get(1);
+            }
+        }
+        
+        return texto;
+        
+    }
     
     
 }

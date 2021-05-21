@@ -17,26 +17,31 @@ public class Auxiliar2 extends Thread {
     private escrituraSegura escrituraS;
     private Recepcion recepcion;
     public Semaphore vacuna = new Semaphore(0);
+    private Registro registro;
 
-    Auxiliar2(Recepcion recepcion, escrituraSegura escrituraS) {
+    Auxiliar2(Recepcion recepcion, escrituraSegura escrituraS, Registro registro) {
         this.escrituraS = escrituraS;
         this.recepcion = recepcion;
+        this.registro = registro;
     }
 
     @Override
     public void run() {
         for (int j = 0; j <= 100; j++) {
+            registro.auxiliar2Trabaja();
             try {
                 for (int i = 0; i < 20; i++) {
                     recepcion.getVacuna();
-                    String var1 = Integer.toString(recepcion.vacunas);
-                    escrituraS.escritura(8, var1, "", "");
+                    //String var1 = Integer.toString(recepcion.vacunas);
+                    //escrituraS.escritura(8, var1, "", "");
                     //System.out.println("El auxiliar 2 ha añadido una vacuna. Hay " + recepcion.vacunas + " vacunas disponibles.");
                     sleep((int) ((Math.random() * 6) + 5) * 100);
                 }
                 escrituraS.escritura(5, "", "", "");
                 //System.out.println("El auxiliar 2 se va a descansar.");
+                registro.auxiliar2Descansa();
                 sleep((int) ((Math.random() * 4) + 1) * 1000);
+                
             } catch (InterruptedException ex) {
                 Logger.getLogger(Auxiliar1.class.getName()).log(Level.SEVERE, null, ex);
             }

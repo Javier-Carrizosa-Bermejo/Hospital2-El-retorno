@@ -6,6 +6,7 @@
 package parte1;
 
 import java.util.concurrent.Semaphore;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -17,16 +18,17 @@ import java.util.concurrent.locks.ReentrantLock;
 public class Recepcion {
     private escrituraSegura escrituraS;
     public Semaphore vacuna = new Semaphore(0);
-    public int vacunas = 0;
+    AtomicInteger numeroVacunas = new AtomicInteger(0);
     private boolean[] listaSalas = new boolean[10], salasMedicos = new boolean[10];
     private PuestoVacunacion[] puestos; //lista de puestos, 
     private Lock libre = new ReentrantLock(), medicos = new ReentrantLock();
     private Condition ningunLibre = libre.newCondition(), ningunPuesto = libre.newCondition();
     private Observacion salaObservacion;
     private int ocupados = 0; //mantiene la cuenta de cuantos pacientes han pasado a vacunarse
+    private Registro registro;
     
     
-    Recepcion(PuestoVacunacion[] puestos, Observacion salaObservacion, escrituraSegura escrituraS){
+    Recepcion(PuestoVacunacion[] puestos, Observacion salaObservacion, escrituraSegura escrituraS, Registro registro){
         for(int i = 0; i < 10;i++){
             listaSalas[i] = false; //false si la sala está ocupada, true si está disponible. Ninguna sala está disponible al comienzo
             salasMedicos[i] = false;
@@ -34,6 +36,7 @@ public class Recepcion {
         this.escrituraS = escrituraS;
         this.puestos = puestos;
         this.salaObservacion = salaObservacion;
+        this.registro = registro;
         
     }
     
@@ -129,8 +132,15 @@ public class Recepcion {
     }
     
     public void getVacuna(){
-        vacunas++;
         vacuna.release();
+        numeroVacunas.incrementAndGet();
+        registro.seModificanVacunas(numeroVacunas.get());
+    }
+    
+    public void cogerVacuna() throws InterruptedException{
+        vacuna.acquire();
+        numeroVacunas.decrementAndGet();
+        registro.seModificanVacunas(numeroVacunas.get());
     }
     
 }

@@ -60,13 +60,13 @@ public class Sanitario extends Thread{
             sleep(tiempoDormir);                        //Descansa
             while((paciente = problematicos.poll()) != null){ //Si hay pacientes que sufren reacción los atiende
                 //poll() devuelve null si no hay elementos, si el paciente es null no se entra en el bucle
-                registro.MedicoCuraEnObersvacion(paciente[1], paciente[0]);
+                registro.MedicoCuraEnObersvacion(paciente[1], this.id);
                 tiempoDormir = (rand.nextInt(4) + 2) * 1000;
                 sleep(tiempoDormir);
                 String var2 = Integer.toString(paciente[0]);
                 String var3 = Integer.toString(this.id);
                 escrituraS.escritura(2, var2, var3, "");
-                /**System.out.println("El paciente " + paciente[0] + " Ha tenido una reacción y"
+                /*System.out.println("El paciente " + paciente[0] + " Ha tenido una reacción y"
                         + " ha sido tratado por " + this.id + " en el puesto " + paciente[1]);*/
                 registro.MedicoMarchaDeObersvacion(paciente[1]);
                 salaObservacion.vistoBueno();   //Da el visto bueno al paciente y lo deja ir

@@ -37,10 +37,9 @@ public class PuestoVacunacion {
         turno.lock();
         try {
             pacientes ++;
-            recepcion.vacuna.acquire();
-            recepcion.vacunas --;
-            String var1 = Integer.toString(recepcion.vacunas);
-            escrituraS.escritura(14, var1, "", "");
+            recepcion.cogerVacuna();
+            String var1;
+            //escrituraS.escritura(14, var1, "", "");
             //System.out.println("El medico ha cogido una vacuna. Quedan " + vacunas + " vacunas disponibles.");
             tiempo = (rand.nextInt(3) + 3) * 1000;
             sleep(tiempo); //tiempo que tarda en vacunarse

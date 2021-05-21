@@ -14,7 +14,8 @@ public class InterfazHospital extends javax.swing.JFrame {
     /**
      * Creates new form InterfazHospital
      */
-    private javax.swing.JTextField[] puestosCuadroTexto = new javax.swing.JTextField[10]; 
+    private javax.swing.JTextField[] puestosCuadroTexto = new javax.swing.JTextField[10];
+    private javax.swing.JTextField[] puestosObservacionCuadroTexto = new javax.swing.JTextField[20];
     
     public InterfazHospital() {
         initComponents();
@@ -28,6 +29,28 @@ public class InterfazHospital extends javax.swing.JFrame {
         puestosCuadroTexto[7] = puestoVacunacion8;
         puestosCuadroTexto[8] = puestoVacunacion9;
         puestosCuadroTexto[9] = puestoVacunacion10;
+        
+        puestosObservacionCuadroTexto[0] = puestoObservacion1;
+        puestosObservacionCuadroTexto[1] = puestoObservacion2;
+        puestosObservacionCuadroTexto[2] = puestoObservacion3;
+        puestosObservacionCuadroTexto[3] = puestoObservacion4;
+        puestosObservacionCuadroTexto[4] = puestoObservacion5;
+        puestosObservacionCuadroTexto[5] = puestoObservacion6;
+        puestosObservacionCuadroTexto[6] = puestoObservacion7;
+        puestosObservacionCuadroTexto[7] = puestoObservacion8;
+        puestosObservacionCuadroTexto[8] = puestoObservacion9;
+        puestosObservacionCuadroTexto[9] = puestoObservacion10;
+        puestosObservacionCuadroTexto[10] = puestoObservacion11;
+        puestosObservacionCuadroTexto[11] = puestoObservacion12;
+        puestosObservacionCuadroTexto[12] = puestoObservacion13;
+        puestosObservacionCuadroTexto[13] = puestoObservacion14;
+        puestosObservacionCuadroTexto[14] = puestoObservacion15;
+        puestosObservacionCuadroTexto[15] = puestoObservacion16;
+        puestosObservacionCuadroTexto[16] = puestoObservacion17;
+        puestosObservacionCuadroTexto[17] = puestoObservacion18;
+        puestosObservacionCuadroTexto[18] = puestoObservacion19;
+        puestosObservacionCuadroTexto[19] = puestoObservacion20;
+        
     }
 
     /**
@@ -76,7 +99,7 @@ public class InterfazHospital extends javax.swing.JFrame {
         puesto10VacunacionLabel = new javax.swing.JLabel();
         auxiliarVacunacionTextField = new javax.swing.JTextField();
         auxiliarVacunacionLabel = new javax.swing.JLabel();
-        vacunasDispoVacunacionTextField = new javax.swing.JTextField();
+        vacunasDisponiblesTextField = new javax.swing.JTextField();
         vacunasDispoVacunacionLabel = new javax.swing.JLabel();
         salaObservacionPanel = new javax.swing.JPanel();
         salaObservacionLabel = new javax.swing.JLabel();
@@ -129,18 +152,6 @@ public class InterfazHospital extends javax.swing.JFrame {
         recepcionLabel.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         recepcionLabel.setText("RECEPCIÓN");
 
-        pacienteAtendido.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pacienteAtendidoActionPerformed(evt);
-            }
-        });
-
-        auxiliarTrabajando.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                auxiliarTrabajandoActionPerformed(evt);
-            }
-        });
-
         colaPacientes.setColumns(20);
         colaPacientes.setRows(5);
         jScrollPane1.setViewportView(colaPacientes);
@@ -170,9 +181,9 @@ public class InterfazHospital extends javax.swing.JFrame {
                             .addComponent(pacienteRecepcionLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(pacienteAtendido))
                         .addGap(83, 83, 83)
-                        .addGroup(recepcionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(auxiliarRecepcionLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(auxiliarTrabajando)))
+                        .addGroup(recepcionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(auxiliarRecepcionLabel)
+                            .addComponent(auxiliarTrabajando, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(colaEsperaRecepcionLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(73, Short.MAX_VALUE))
         );
@@ -234,47 +245,17 @@ public class InterfazHospital extends javax.swing.JFrame {
         salaVacunacionLabel.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         salaVacunacionLabel.setText("SALA DE VACUNACIÓN");
 
-        puestoVacunacion1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                puestoVacunacion1ActionPerformed(evt);
-            }
-        });
-
         puesto1VacunacionLabel.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         puesto1VacunacionLabel.setText("Puesto 1");
-
-        puestoVacunacion2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                puestoVacunacion2ActionPerformed(evt);
-            }
-        });
 
         puesto2VacunacionLabel.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         puesto2VacunacionLabel.setText("Puesto 2");
 
-        puestoVacunacion3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                puestoVacunacion3ActionPerformed(evt);
-            }
-        });
-
         puesto3VacunacionLabel.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         puesto3VacunacionLabel.setText("Puesto 3");
 
-        puestoVacunacion4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                puestoVacunacion4ActionPerformed(evt);
-            }
-        });
-
         puesto4VacunacionLabel.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         puesto4VacunacionLabel.setText("Puesto 4");
-
-        puestoVacunacion5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                puestoVacunacion5ActionPerformed(evt);
-            }
-        });
 
         puesto5VacunacionLabel.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         puesto5VacunacionLabel.setText("Puesto 5");
@@ -294,17 +275,8 @@ public class InterfazHospital extends javax.swing.JFrame {
         puesto10VacunacionLabel.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         puesto10VacunacionLabel.setText("Puesto 10");
 
-        auxiliarVacunacionTextField.setText("jTextField4");
-        auxiliarVacunacionTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                auxiliarVacunacionTextFieldActionPerformed(evt);
-            }
-        });
-
         auxiliarVacunacionLabel.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         auxiliarVacunacionLabel.setText("Auxiliar");
-
-        vacunasDispoVacunacionTextField.setText("jTextField10");
 
         vacunasDispoVacunacionLabel.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         vacunasDispoVacunacionLabel.setText("Vacunas Disponibles");
@@ -348,23 +320,28 @@ public class InterfazHospital extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(salaVacunacionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(salaVacunacionPanelLayout.createSequentialGroup()
-                        .addGroup(salaVacunacionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(puestoVacunacion5, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
-                            .addComponent(puestoVacunacion10))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(salaVacunacionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(auxiliarVacunacionTextField)
-                            .addComponent(vacunasDispoVacunacionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
-                        .addGap(256, 256, 256))
-                    .addGroup(salaVacunacionPanelLayout.createSequentialGroup()
                         .addComponent(puesto5VacunacionLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(auxiliarVacunacionLabel)
                         .addGap(289, 289, 289))
-                    .addGroup(salaVacunacionPanelLayout.createSequentialGroup()
-                        .addComponent(puesto10VacunacionLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(vacunasDispoVacunacionLabel)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, salaVacunacionPanelLayout.createSequentialGroup()
+                        .addGroup(salaVacunacionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, salaVacunacionPanelLayout.createSequentialGroup()
+                                .addGroup(salaVacunacionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(puestoVacunacion5, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
+                                    .addComponent(puestoVacunacion10))
+                                .addGroup(salaVacunacionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(salaVacunacionPanelLayout.createSequentialGroup()
+                                        .addGap(228, 228, 228)
+                                        .addComponent(auxiliarVacunacionTextField)
+                                        .addGap(45, 45, 45))
+                                    .addGroup(salaVacunacionPanelLayout.createSequentialGroup()
+                                        .addGap(230, 230, 230)
+                                        .addComponent(vacunasDisponiblesTextField))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, salaVacunacionPanelLayout.createSequentialGroup()
+                                .addComponent(puesto10VacunacionLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 267, Short.MAX_VALUE)
+                                .addComponent(vacunasDispoVacunacionLabel)))
                         .addGap(211, 211, 211))))
         );
         salaVacunacionPanelLayout.setVerticalGroup(
@@ -403,7 +380,7 @@ public class InterfazHospital extends javax.swing.JFrame {
                     .addComponent(puestoVacunacion8, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(puestoVacunacion9, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(puestoVacunacion10, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(vacunasDispoVacunacionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(vacunasDisponiblesTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(36, 36, 36))
         );
 
@@ -412,182 +389,62 @@ public class InterfazHospital extends javax.swing.JFrame {
         salaObservacionLabel.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         salaObservacionLabel.setText("SALA DE OBSERVACIÓN");
 
-        puestoObservacion1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                puestoObservacion1ActionPerformed(evt);
-            }
-        });
-
         puesto1ObservacionLabel.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         puesto1ObservacionLabel.setText("Puesto 1");
-
-        puestoObservacion2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                puestoObservacion2ActionPerformed(evt);
-            }
-        });
 
         puesto2ObservacionLabel.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         puesto2ObservacionLabel.setText("Puesto 2");
 
-        puestoObservacion3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                puestoObservacion3ActionPerformed(evt);
-            }
-        });
-
         puesto3ObservacionLabel.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         puesto3ObservacionLabel.setText("Puesto 3");
-
-        puestoObservacion4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                puestoObservacion4ActionPerformed(evt);
-            }
-        });
 
         puesto4ObservacionLabel.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         puesto4ObservacionLabel.setText("Puesto 4");
 
-        puestoObservacion5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                puestoObservacion5ActionPerformed(evt);
-            }
-        });
-
         puesto5ObservacionLabel.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         puesto5ObservacionLabel.setText("Puesto 5");
-
-        puestoObservacion6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                puestoObservacion6ActionPerformed(evt);
-            }
-        });
 
         puesto6ObservacionLabel.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         puesto6ObservacionLabel.setText("Puesto 6");
 
-        puestoObservacion7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                puestoObservacion7ActionPerformed(evt);
-            }
-        });
-
         puesto7ObservacionLabel.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         puesto7ObservacionLabel.setText("Puesto 7 ");
-
-        puestoObservacion8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                puestoObservacion8ActionPerformed(evt);
-            }
-        });
 
         puesto8ObservacionLabel.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         puesto8ObservacionLabel.setText("Puesto 8");
 
-        puestoObservacion9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                puestoObservacion9ActionPerformed(evt);
-            }
-        });
-
         puesto9ObservacionLabel.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         puesto9ObservacionLabel.setText("Puesto 9");
-
-        puestoObservacion10.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                puestoObservacion10ActionPerformed(evt);
-            }
-        });
 
         puesto10ObservacionLabel.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         puesto10ObservacionLabel.setText("Puesto 10 ");
 
-        puestoObservacion11.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                puestoObservacion11ActionPerformed(evt);
-            }
-        });
-
         puesto11ObservacionLabel.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         puesto11ObservacionLabel.setText("Puesto 11");
-
-        puestoObservacion12.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                puestoObservacion12ActionPerformed(evt);
-            }
-        });
 
         puesto12ObservacionLabel.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         puesto12ObservacionLabel.setText("Puesto 12");
 
-        puestoObservacion13.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                puestoObservacion13ActionPerformed(evt);
-            }
-        });
-
         puesto13ObservacionLabel.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         puesto13ObservacionLabel.setText("Puesto 13");
-
-        puestoObservacion14.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                puestoObservacion14ActionPerformed(evt);
-            }
-        });
 
         puesto14ObservacionLabel.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         puesto14ObservacionLabel.setText("Puesto 14");
 
-        puestoObservacion15.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                puestoObservacion15ActionPerformed(evt);
-            }
-        });
-
         puesto15ObservacionLabel.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         puesto15ObservacionLabel.setText("Puesto 15");
-
-        puestoObservacion16.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                puestoObservacion16ActionPerformed(evt);
-            }
-        });
 
         puesto16ObservacionLabel.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         puesto16ObservacionLabel.setText("Puesto 16");
 
-        puestoObservacion17.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                puestoObservacion17ActionPerformed(evt);
-            }
-        });
-
         puesto17ObservacionLabel.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         puesto17ObservacionLabel.setText("Puesto 17 ");
-
-        puestoObservacion18.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                puestoObservacion18ActionPerformed(evt);
-            }
-        });
 
         puesto18ObservacionLabel.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         puesto18ObservacionLabel.setText("Puesto 18");
 
-        puestoObservacion19.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                puestoObservacion19ActionPerformed(evt);
-            }
-        });
-
         puesto19ObservacionLabel.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         puesto19ObservacionLabel.setText("Puesto 19");
-
-        puestoObservacion20.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                puestoObservacion20ActionPerformed(evt);
-            }
-        });
 
         puesto20ObservacionLabel.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         puesto20ObservacionLabel.setText("Puesto 20 ");
@@ -772,118 +629,6 @@ public class InterfazHospital extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void pacienteAtendidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pacienteAtendidoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_pacienteAtendidoActionPerformed
-
-    private void auxiliarTrabajandoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_auxiliarTrabajandoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_auxiliarTrabajandoActionPerformed
-
-    private void puestoVacunacion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_puestoVacunacion1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_puestoVacunacion1ActionPerformed
-
-    private void puestoVacunacion2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_puestoVacunacion2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_puestoVacunacion2ActionPerformed
-
-    private void puestoVacunacion3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_puestoVacunacion3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_puestoVacunacion3ActionPerformed
-
-    private void puestoVacunacion4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_puestoVacunacion4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_puestoVacunacion4ActionPerformed
-
-    private void puestoVacunacion5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_puestoVacunacion5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_puestoVacunacion5ActionPerformed
-
-    private void auxiliarVacunacionTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_auxiliarVacunacionTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_auxiliarVacunacionTextFieldActionPerformed
-
-    private void puestoObservacion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_puestoObservacion1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_puestoObservacion1ActionPerformed
-
-    private void puestoObservacion2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_puestoObservacion2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_puestoObservacion2ActionPerformed
-
-    private void puestoObservacion3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_puestoObservacion3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_puestoObservacion3ActionPerformed
-
-    private void puestoObservacion4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_puestoObservacion4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_puestoObservacion4ActionPerformed
-
-    private void puestoObservacion5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_puestoObservacion5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_puestoObservacion5ActionPerformed
-
-    private void puestoObservacion6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_puestoObservacion6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_puestoObservacion6ActionPerformed
-
-    private void puestoObservacion7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_puestoObservacion7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_puestoObservacion7ActionPerformed
-
-    private void puestoObservacion8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_puestoObservacion8ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_puestoObservacion8ActionPerformed
-
-    private void puestoObservacion9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_puestoObservacion9ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_puestoObservacion9ActionPerformed
-
-    private void puestoObservacion10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_puestoObservacion10ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_puestoObservacion10ActionPerformed
-
-    private void puestoObservacion11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_puestoObservacion11ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_puestoObservacion11ActionPerformed
-
-    private void puestoObservacion12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_puestoObservacion12ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_puestoObservacion12ActionPerformed
-
-    private void puestoObservacion13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_puestoObservacion13ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_puestoObservacion13ActionPerformed
-
-    private void puestoObservacion14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_puestoObservacion14ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_puestoObservacion14ActionPerformed
-
-    private void puestoObservacion15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_puestoObservacion15ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_puestoObservacion15ActionPerformed
-
-    private void puestoObservacion16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_puestoObservacion16ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_puestoObservacion16ActionPerformed
-
-    private void puestoObservacion17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_puestoObservacion17ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_puestoObservacion17ActionPerformed
-
-    private void puestoObservacion18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_puestoObservacion18ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_puestoObservacion18ActionPerformed
-
-    private void puestoObservacion19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_puestoObservacion19ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_puestoObservacion19ActionPerformed
-
-    private void puestoObservacion20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_puestoObservacion20ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_puestoObservacion20ActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -1000,7 +745,7 @@ public class InterfazHospital extends javax.swing.JFrame {
     private javax.swing.JLabel salaVacunacionLabel;
     private javax.swing.JPanel salaVacunacionPanel;
     private javax.swing.JLabel vacunasDispoVacunacionLabel;
-    private javax.swing.JTextField vacunasDispoVacunacionTextField;
+    private javax.swing.JTextField vacunasDisponiblesTextField;
     // End of variables declaration//GEN-END:variables
     
     
@@ -1021,10 +766,22 @@ public class InterfazHospital extends javax.swing.JFrame {
         auxiliarTrabajando.setText(texto);
     }
     
+    public void modificarAuxiliar2(String texto){
+        auxiliarVacunacionTextField.setText(texto);
+    }
+    
+    public void setVacunasDisponibles(String texto){
+        vacunasDisponiblesTextField.setText(texto);
+    }
+    
     
     public void pintarVacunacion(String texto, int nmero){
         puestosCuadroTexto[nmero-4].setText(texto);
         
+    }
+    
+    public void pintarObservacion(String texto, int nmero){
+        puestosObservacionCuadroTexto[nmero-16].setText(texto);
     }
     
 
