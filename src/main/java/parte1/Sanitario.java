@@ -51,13 +51,14 @@ public class Sanitario extends Thread{
         }
         while(true){
             try {
-            registro.medicoAbandonaDescanso(id);
+            //registro.medicoAbandonaDescanso(id);
             miPuesto = recepcion.medicoEntraEnSala();   //El médico pilla la primera sala libre que vea
             registro.medicoEntraEnSala(id, miPuesto.getID());
             miPuesto.vacunar(id);                       //Procede a vacunar, tras 15 pacientes se va a descansar
             registro.medicoAbandonaSala(miPuesto.getID()); 
             tiempoDormir = (rand.nextInt(4) + 5) * 1000;
             sleep(tiempoDormir);                        //Descansa
+            registro.medicoAbandonaDescanso(id);
             while((paciente = problematicos.poll()) != null){ //Si hay pacientes que sufren reacción los atiende
                 //poll() devuelve null si no hay elementos, si el paciente es null no se entra en el bucle
                 registro.MedicoCuraEnObersvacion(paciente[1], this.id);
@@ -66,10 +67,10 @@ public class Sanitario extends Thread{
                 String var2 = Integer.toString(paciente[0]);
                 String var3 = Integer.toString(this.id);
                 escrituraS.escritura(2, var2, var3, "");
-                /*System.out.println("El paciente " + paciente[0] + " Ha tenido una reacción y"
-                        + " ha sido tratado por " + this.id + " en el puesto " + paciente[1]);*/
+                System.out.println("El paciente " + paciente[0] + " Ha tenido una reacción y"
+                        + " ha sido tratado por " + this.id + " en el puesto " + paciente[1]);
                 registro.MedicoMarchaDeObersvacion(paciente[1]);
-                salaObservacion.vistoBueno();   //Da el visto bueno al paciente y lo deja ir
+                salaObservacion.vistoBueno(paciente[1]);   //Da el visto bueno al paciente y lo deja ir
                 
                 
             }

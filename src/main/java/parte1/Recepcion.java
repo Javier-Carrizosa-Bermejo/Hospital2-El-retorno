@@ -56,6 +56,7 @@ public class Recepcion {
                     if (listaSalas[i]){
                         listaSalas[i] = false; //La sala queda ocupada
                         ocupados++; //aumentamos el contador de atendidos
+                        puestos[i].setPacienteEnCamino();
                         return puestos[i]; //Devolvemos el puesto al auxiliar
                     }
                 }  //Si no hay ninguna sala libre toca esperar
@@ -93,6 +94,21 @@ public class Recepcion {
         } finally {
             libre.unlock();
         }
+    }
+    
+    public void cerrarSala(int id) throws InterruptedException{
+        System.out.println("Se cierra la sala: " + id);
+        puestos[id].cerrarPuesto();
+        libre.lock();
+        try {
+            
+            listaSalas[id] = false;
+            
+        } finally {
+            libre.unlock();
+            
+        }
+        
     }
     
     

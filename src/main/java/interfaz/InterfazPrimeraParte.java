@@ -3,60 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Cliente;
+package interfaz;
 
 /**
  *
  * @author Revij
  */
-import java.util.ArrayList; 
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
-
-public class InterfazHospital extends javax.swing.JFrame {
+public class InterfazPrimeraParte extends javax.swing.JFrame {
 
     /**
-     * Creates new form InterfazHospital
+     * Creates new form InterfazPrimeraParte
      */
-    private Lock cerradura = new ReentrantLock();
-    private javax.swing.JTextField[] puestosCuadroTexto = new javax.swing.JTextField[10];
-    private javax.swing.JTextField[] puestosObservacionCuadroTexto = new javax.swing.JTextField[20];
-    private ArrayList<Integer> puestosACerrar = new ArrayList<Integer>();
-    
-    public InterfazHospital() {
+    public InterfazPrimeraParte() {
         initComponents();
-        puestosCuadroTexto[0] = puestoVacunacion1;
-        puestosCuadroTexto[1] = puestoVacunacion2;
-        puestosCuadroTexto[2] = puestoVacunacion3;
-        puestosCuadroTexto[3] = puestoVacunacion4;
-        puestosCuadroTexto[4] = puestoVacunacion5;
-        puestosCuadroTexto[5] = puestoVacunacion6;
-        puestosCuadroTexto[6] = puestoVacunacion7;
-        puestosCuadroTexto[7] = puestoVacunacion8;
-        puestosCuadroTexto[8] = puestoVacunacion9;
-        puestosCuadroTexto[9] = puestoVacunacion10;
-        
-        puestosObservacionCuadroTexto[0] = puestoObservacion1;
-        puestosObservacionCuadroTexto[1] = puestoObservacion2;
-        puestosObservacionCuadroTexto[2] = puestoObservacion3;
-        puestosObservacionCuadroTexto[3] = puestoObservacion4;
-        puestosObservacionCuadroTexto[4] = puestoObservacion5;
-        puestosObservacionCuadroTexto[5] = puestoObservacion6;
-        puestosObservacionCuadroTexto[6] = puestoObservacion7;
-        puestosObservacionCuadroTexto[7] = puestoObservacion8;
-        puestosObservacionCuadroTexto[8] = puestoObservacion9;
-        puestosObservacionCuadroTexto[9] = puestoObservacion10;
-        puestosObservacionCuadroTexto[10] = puestoObservacion11;
-        puestosObservacionCuadroTexto[11] = puestoObservacion12;
-        puestosObservacionCuadroTexto[12] = puestoObservacion13;
-        puestosObservacionCuadroTexto[13] = puestoObservacion14;
-        puestosObservacionCuadroTexto[14] = puestoObservacion15;
-        puestosObservacionCuadroTexto[15] = puestoObservacion16;
-        puestosObservacionCuadroTexto[16] = puestoObservacion17;
-        puestosObservacionCuadroTexto[17] = puestoObservacion18;
-        puestosObservacionCuadroTexto[18] = puestoObservacion19;
-        puestosObservacionCuadroTexto[19] = puestoObservacion20;
-        
     }
 
     /**
@@ -107,16 +66,6 @@ public class InterfazHospital extends javax.swing.JFrame {
         auxiliarVacunacionLabel = new javax.swing.JLabel();
         vacunasDisponiblesTextField = new javax.swing.JTextField();
         vacunasDispoVacunacionLabel = new javax.swing.JLabel();
-        botonPuestoVacunacion1 = new javax.swing.JToggleButton();
-        botonPuestoVacunacion2 = new javax.swing.JToggleButton();
-        botonPuestoVacunacion3 = new javax.swing.JToggleButton();
-        botonPuestoVacunacion4 = new javax.swing.JToggleButton();
-        botonPuestoVacunacion5 = new javax.swing.JToggleButton();
-        botonPuestoVacunacion6 = new javax.swing.JToggleButton();
-        botonPuestoVacunacion7 = new javax.swing.JToggleButton();
-        botonPuestoVacunacion8 = new javax.swing.JToggleButton();
-        botonPuestoVacunacion9 = new javax.swing.JToggleButton();
-        botonPuestoVacunacion10 = new javax.swing.JToggleButton();
         salaObservacionPanel = new javax.swing.JPanel();
         salaObservacionLabel = new javax.swing.JLabel();
         puestoObservacion1 = new javax.swing.JTextField();
@@ -193,15 +142,15 @@ public class InterfazHospital extends javax.swing.JFrame {
                 .addGroup(recepcionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 605, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(recepcionPanelLayout.createSequentialGroup()
-                        .addGroup(recepcionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(pacienteRecepcionLabel)
-                            .addComponent(pacienteAtendido, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(70, 70, 70)
+                        .addGroup(recepcionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(pacienteRecepcionLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(pacienteAtendido))
+                        .addGap(83, 83, 83)
                         .addGroup(recepcionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(auxiliarRecepcionLabel)
                             .addComponent(auxiliarTrabajando, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(colaEsperaRecepcionLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(95, Short.MAX_VALUE))
+                .addContainerGap(73, Short.MAX_VALUE))
         );
         recepcionPanelLayout.setVerticalGroup(
             recepcionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -291,87 +240,11 @@ public class InterfazHospital extends javax.swing.JFrame {
         puesto10VacunacionLabel.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         puesto10VacunacionLabel.setText("Puesto 10");
 
-        auxiliarVacunacionTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                auxiliarVacunacionTextFieldActionPerformed(evt);
-            }
-        });
-
         auxiliarVacunacionLabel.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         auxiliarVacunacionLabel.setText("Auxiliar");
 
         vacunasDispoVacunacionLabel.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         vacunasDispoVacunacionLabel.setText("Vacunas Disponibles");
-
-        botonPuestoVacunacion1.setText("Cerrar");
-        botonPuestoVacunacion1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonPuestoVacunacion1ActionPerformed(evt);
-            }
-        });
-
-        botonPuestoVacunacion2.setText("Cerrar");
-        botonPuestoVacunacion2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonPuestoVacunacion2ActionPerformed(evt);
-            }
-        });
-
-        botonPuestoVacunacion3.setText("Cerrar");
-        botonPuestoVacunacion3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonPuestoVacunacion3ActionPerformed(evt);
-            }
-        });
-
-        botonPuestoVacunacion4.setText("Cerrar");
-        botonPuestoVacunacion4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonPuestoVacunacion4ActionPerformed(evt);
-            }
-        });
-
-        botonPuestoVacunacion5.setText("Cerrar");
-        botonPuestoVacunacion5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonPuestoVacunacion5ActionPerformed(evt);
-            }
-        });
-
-        botonPuestoVacunacion6.setText("Cerrar");
-        botonPuestoVacunacion6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonPuestoVacunacion6ActionPerformed(evt);
-            }
-        });
-
-        botonPuestoVacunacion7.setText("Cerrar");
-        botonPuestoVacunacion7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonPuestoVacunacion7ActionPerformed(evt);
-            }
-        });
-
-        botonPuestoVacunacion8.setText("Cerrar");
-        botonPuestoVacunacion8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonPuestoVacunacion8ActionPerformed(evt);
-            }
-        });
-
-        botonPuestoVacunacion9.setText("Cerrar");
-        botonPuestoVacunacion9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonPuestoVacunacion9ActionPerformed(evt);
-            }
-        });
-
-        botonPuestoVacunacion10.setText("Cerrar");
-        botonPuestoVacunacion10.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonPuestoVacunacion10ActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout salaVacunacionPanelLayout = new javax.swing.GroupLayout(salaVacunacionPanel);
         salaVacunacionPanel.setLayout(salaVacunacionPanelLayout);
@@ -384,70 +257,64 @@ public class InterfazHospital extends javax.swing.JFrame {
             .addGroup(salaVacunacionPanelLayout.createSequentialGroup()
                 .addGap(88, 88, 88)
                 .addGroup(salaVacunacionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(botonPuestoVacunacion1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(puestoVacunacion6, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
                     .addComponent(puestoVacunacion1)
                     .addComponent(puesto1VacunacionLabel)
-                    .addComponent(puesto6VacunacionLabel)
-                    .addComponent(botonPuestoVacunacion6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addGroup(salaVacunacionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(puestoVacunacion2, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
-                    .addComponent(puestoVacunacion7)
-                    .addComponent(puesto2VacunacionLabel)
-                    .addComponent(puesto7VacunacionLabel)
-                    .addComponent(botonPuestoVacunacion2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(botonPuestoVacunacion7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addGroup(salaVacunacionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(puestoVacunacion3, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
-                    .addComponent(puestoVacunacion8)
-                    .addComponent(puesto3VacunacionLabel)
-                    .addComponent(puesto8VacunacionLabel)
-                    .addComponent(botonPuestoVacunacion3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(botonPuestoVacunacion8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addGroup(salaVacunacionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(puestoVacunacion4, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
-                    .addComponent(puestoVacunacion9)
-                    .addComponent(puesto4VacunacionLabel)
-                    .addComponent(puesto9VacunacionLabel)
-                    .addComponent(botonPuestoVacunacion4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(botonPuestoVacunacion9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(puesto6VacunacionLabel))
                 .addGap(18, 18, 18)
                 .addGroup(salaVacunacionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, salaVacunacionPanelLayout.createSequentialGroup()
-                        .addComponent(botonPuestoVacunacion5, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(salaVacunacionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(puestoVacunacion2, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
+                        .addComponent(puestoVacunacion7))
+                    .addComponent(puesto2VacunacionLabel)
+                    .addComponent(puesto7VacunacionLabel))
+                .addGap(18, 18, 18)
+                .addGroup(salaVacunacionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(salaVacunacionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(puestoVacunacion3, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
+                        .addComponent(puestoVacunacion8))
+                    .addComponent(puesto3VacunacionLabel)
+                    .addComponent(puesto8VacunacionLabel))
+                .addGap(18, 18, 18)
+                .addGroup(salaVacunacionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(salaVacunacionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(puestoVacunacion4, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
+                        .addComponent(puestoVacunacion9))
+                    .addComponent(puesto4VacunacionLabel)
+                    .addComponent(puesto9VacunacionLabel))
+                .addGap(18, 18, 18)
+                .addGroup(salaVacunacionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(salaVacunacionPanelLayout.createSequentialGroup()
                         .addComponent(puesto5VacunacionLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(auxiliarVacunacionLabel)
-                        .addGap(219, 219, 219))
+                        .addGap(289, 289, 289))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, salaVacunacionPanelLayout.createSequentialGroup()
                         .addGroup(salaVacunacionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(salaVacunacionPanelLayout.createSequentialGroup()
-                                .addGroup(salaVacunacionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(botonPuestoVacunacion10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(puestoVacunacion10, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE))
-                                .addGap(297, 297, 297)
-                                .addComponent(vacunasDisponiblesTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE))
-                            .addGroup(salaVacunacionPanelLayout.createSequentialGroup()
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, salaVacunacionPanelLayout.createSequentialGroup()
+                                .addGroup(salaVacunacionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(puestoVacunacion5, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
+                                    .addComponent(puestoVacunacion10))
                                 .addGroup(salaVacunacionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(puesto10VacunacionLabel)
-                                    .addComponent(puestoVacunacion5, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(salaVacunacionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(vacunasDispoVacunacionLabel, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(auxiliarVacunacionTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(173, 173, 173))))
+                                    .addGroup(salaVacunacionPanelLayout.createSequentialGroup()
+                                        .addGap(228, 228, 228)
+                                        .addComponent(auxiliarVacunacionTextField)
+                                        .addGap(45, 45, 45))
+                                    .addGroup(salaVacunacionPanelLayout.createSequentialGroup()
+                                        .addGap(230, 230, 230)
+                                        .addComponent(vacunasDisponiblesTextField))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, salaVacunacionPanelLayout.createSequentialGroup()
+                                .addComponent(puesto10VacunacionLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 267, Short.MAX_VALUE)
+                                .addComponent(vacunasDispoVacunacionLabel)))
+                        .addGap(211, 211, 211))))
         );
         salaVacunacionPanelLayout.setVerticalGroup(
             salaVacunacionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(salaVacunacionPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(salaVacunacionLabel)
-                .addGap(16, 16, 16)
+                .addGap(38, 38, 38)
                 .addGroup(salaVacunacionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(puesto1VacunacionLabel)
                     .addComponent(puesto2VacunacionLabel)
@@ -460,17 +327,10 @@ public class InterfazHospital extends javax.swing.JFrame {
                     .addComponent(puestoVacunacion1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(puestoVacunacion2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(puestoVacunacion3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(puestoVacunacion4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(puestoVacunacion5, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(auxiliarVacunacionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(salaVacunacionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botonPuestoVacunacion2)
-                    .addComponent(botonPuestoVacunacion3)
-                    .addComponent(botonPuestoVacunacion4)
-                    .addComponent(botonPuestoVacunacion5)
-                    .addComponent(botonPuestoVacunacion1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(11, 11, 11)
+                    .addComponent(auxiliarVacunacionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(puestoVacunacion4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33)
                 .addGroup(salaVacunacionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(puesto6VacunacionLabel)
                     .addComponent(puesto7VacunacionLabel)
@@ -478,26 +338,15 @@ public class InterfazHospital extends javax.swing.JFrame {
                     .addComponent(puesto9VacunacionLabel)
                     .addComponent(puesto10VacunacionLabel)
                     .addComponent(vacunasDispoVacunacionLabel))
-                .addGroup(salaVacunacionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(salaVacunacionPanelLayout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(vacunasDisponiblesTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(salaVacunacionPanelLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(salaVacunacionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(puestoVacunacion6, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(puestoVacunacion7, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(puestoVacunacion8, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(puestoVacunacion9, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(puestoVacunacion10, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(salaVacunacionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(botonPuestoVacunacion6)
-                            .addComponent(botonPuestoVacunacion7)
-                            .addComponent(botonPuestoVacunacion8)
-                            .addComponent(botonPuestoVacunacion9)
-                            .addComponent(botonPuestoVacunacion10))))
-                .addGap(32, 32, 32))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(salaVacunacionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(puestoVacunacion7, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(puestoVacunacion6, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(puestoVacunacion8, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(puestoVacunacion9, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(puestoVacunacion10, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(vacunasDisponiblesTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(36, 36, 36))
         );
 
         salaObservacionPanel.setBackground(new java.awt.Color(153, 153, 153));
@@ -570,7 +419,7 @@ public class InterfazHospital extends javax.swing.JFrame {
         salaObservacionPanelLayout.setHorizontalGroup(
             salaObservacionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, salaObservacionPanelLayout.createSequentialGroup()
-                .addContainerGap(67, Short.MAX_VALUE)
+                .addContainerGap(45, Short.MAX_VALUE)
                 .addGroup(salaObservacionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(salaObservacionPanelLayout.createSequentialGroup()
                         .addComponent(puesto1ObservacionLabel)
@@ -745,100 +594,6 @@ public class InterfazHospital extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void botonPuestoVacunacion5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPuestoVacunacion5ActionPerformed
-        cerradura.lock();
-        try {
-            puestosACerrar.add(4);
-        } finally {
-            cerradura.unlock();
-        }
-    }//GEN-LAST:event_botonPuestoVacunacion5ActionPerformed
-
-    private void auxiliarVacunacionTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_auxiliarVacunacionTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_auxiliarVacunacionTextFieldActionPerformed
-
-    private void botonPuestoVacunacion6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPuestoVacunacion6ActionPerformed
-        cerradura.lock();
-        try {
-            puestosACerrar.add(5);
-        } finally {
-            cerradura.unlock();
-        }
-    }//GEN-LAST:event_botonPuestoVacunacion6ActionPerformed
-
-    private void botonPuestoVacunacion8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPuestoVacunacion8ActionPerformed
-        cerradura.lock();
-        try {
-            puestosACerrar.add(7);
-        } finally {
-            cerradura.unlock();
-        }
-    }//GEN-LAST:event_botonPuestoVacunacion8ActionPerformed
-
-    private void botonPuestoVacunacion10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPuestoVacunacion10ActionPerformed
-        cerradura.lock();
-        try {
-            puestosACerrar.add(9);
-        } finally {
-            cerradura.unlock();
-        }
-    }//GEN-LAST:event_botonPuestoVacunacion10ActionPerformed
-
-    private void botonPuestoVacunacion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPuestoVacunacion1ActionPerformed
-        cerradura.lock();
-        try {
-            puestosACerrar.add(0);
-        } finally {
-            cerradura.unlock();
-        }
-    }//GEN-LAST:event_botonPuestoVacunacion1ActionPerformed
-
-    private void botonPuestoVacunacion2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPuestoVacunacion2ActionPerformed
-        cerradura.lock();
-        try {
-            puestosACerrar.add(1);
-        } finally {
-            cerradura.unlock();
-        }
-    }//GEN-LAST:event_botonPuestoVacunacion2ActionPerformed
-
-    private void botonPuestoVacunacion3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPuestoVacunacion3ActionPerformed
-        cerradura.lock();
-        try {
-            puestosACerrar.add(2);
-        } finally {
-            cerradura.unlock();
-        }
-    }//GEN-LAST:event_botonPuestoVacunacion3ActionPerformed
-
-    private void botonPuestoVacunacion4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPuestoVacunacion4ActionPerformed
-        cerradura.lock();
-        try {
-            puestosACerrar.add(3);
-        } finally {
-            cerradura.unlock();
-        }
-    }//GEN-LAST:event_botonPuestoVacunacion4ActionPerformed
-
-    private void botonPuestoVacunacion7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPuestoVacunacion7ActionPerformed
-        cerradura.lock();
-        try {
-            puestosACerrar.add(6);
-        } finally {
-            cerradura.unlock();
-        }
-    }//GEN-LAST:event_botonPuestoVacunacion7ActionPerformed
-
-    private void botonPuestoVacunacion9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPuestoVacunacion9ActionPerformed
-        cerradura.lock();
-        try {
-            puestosACerrar.add(8);
-        } finally {
-            cerradura.unlock();
-        }
-    }//GEN-LAST:event_botonPuestoVacunacion9ActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -856,20 +611,21 @@ public class InterfazHospital extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(InterfazHospital.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfazPrimeraParte.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(InterfazHospital.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfazPrimeraParte.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(InterfazHospital.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfazPrimeraParte.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(InterfazHospital.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfazPrimeraParte.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
-                new InterfazHospital().setVisible(true);
+                new InterfazPrimeraParte().setVisible(true);
             }
         });
     }
@@ -879,16 +635,6 @@ public class InterfazHospital extends javax.swing.JFrame {
     private javax.swing.JTextField auxiliarTrabajando;
     private javax.swing.JLabel auxiliarVacunacionLabel;
     private javax.swing.JTextField auxiliarVacunacionTextField;
-    private javax.swing.JToggleButton botonPuestoVacunacion1;
-    private javax.swing.JToggleButton botonPuestoVacunacion10;
-    private javax.swing.JToggleButton botonPuestoVacunacion2;
-    private javax.swing.JToggleButton botonPuestoVacunacion3;
-    private javax.swing.JToggleButton botonPuestoVacunacion4;
-    private javax.swing.JToggleButton botonPuestoVacunacion5;
-    private javax.swing.JToggleButton botonPuestoVacunacion6;
-    private javax.swing.JToggleButton botonPuestoVacunacion7;
-    private javax.swing.JToggleButton botonPuestoVacunacion8;
-    private javax.swing.JToggleButton botonPuestoVacunacion9;
     private javax.swing.JLabel colaEsperaRecepcionLabel;
     private javax.swing.JTextArea colaPacientes;
     private javax.swing.JScrollPane jScrollPane1;
@@ -967,60 +713,4 @@ public class InterfazHospital extends javax.swing.JFrame {
     private javax.swing.JLabel vacunasDispoVacunacionLabel;
     private javax.swing.JTextField vacunasDisponiblesTextField;
     // End of variables declaration//GEN-END:variables
-    
-    
-    
-    public void colaPacientesModificar(String texto){
-        colaPacientes.setText(texto);
-    }
-    
-    public void pacienteAtendidoModificar(String texto){
-        pacienteAtendido.setText(texto);
-    }
-    
-    public void salaDescansoModificar(String texto){
-        salaDescanso.setText(texto);
-    }
-    
-    public void modificarAuxiliar(String texto){
-        auxiliarTrabajando.setText(texto);
-    }
-    
-    public void modificarAuxiliar2(String texto){
-        auxiliarVacunacionTextField.setText(texto);
-    }
-    
-    public void setVacunasDisponibles(String texto){
-        vacunasDisponiblesTextField.setText(texto);
-    }
-    
-    
-    public void pintarVacunacion(String texto, int nmero){
-        puestosCuadroTexto[nmero-4].setText(texto);
-        
-    }
-    
-    public void pintarObservacion(String texto, int nmero){
-        puestosObservacionCuadroTexto[nmero-16].setText(texto);
-    }
-    
-    public ArrayList<Integer> getPuestosACerrar(){
-        cerradura.lock();
-        try {
-            return puestosACerrar;
-        } finally {
-            cerradura.unlock();
-        }
-    }
-    
-    public void limpiarPuestosACerrar(){
-        cerradura.lock();
-        try {
-            puestosACerrar.clear();
-        } finally {
-            cerradura.unlock();
-        }
-    }
-    
-
 }

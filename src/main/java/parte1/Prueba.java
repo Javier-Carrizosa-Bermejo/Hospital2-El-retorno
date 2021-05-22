@@ -32,7 +32,7 @@ public class Prueba {
         Recepcion recepcion = new Recepcion(puestos, salaObservacion, escrituraS, registro);
         salaObservacion = new Observacion(recepcion, reaccionesObservacion, escrituraS, registro);
         
-        Servidor server = new Servidor(registro);
+        Servidor server = new Servidor(registro, recepcion);
         server.start();
         Cliente cliente = new Cliente();
         cliente.start();

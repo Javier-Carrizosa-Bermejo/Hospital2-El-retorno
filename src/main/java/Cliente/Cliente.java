@@ -45,9 +45,10 @@ public class Cliente  extends Thread{
             while(contador < 300){
                 //salida.writeObject((Integer) contador); //Enviamos un mensaje al servidor
                 informacion = (ConcurrentHashMap<Integer, ArrayList<String>>) entrada.readObject(); //Leemos la respuesta
+                salida.writeObject(picasso.getPuestosACerrar());
+                picasso.limpiarPuestos();
                 contador++;
-                System.out.println(informacion.get(14));
-                System.out.println(informacion.get(15));
+                salida.reset();
                 picasso.setInfo(informacion);
                 
             }
@@ -60,6 +61,8 @@ public class Cliente  extends Thread{
             Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    
 
     
 }

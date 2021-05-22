@@ -26,6 +26,7 @@ public class Observacion {
     private Recepcion recepcion;
     private ConcurrentLinkedQueue<Integer[]> problematicos; //guardará el puesto y el id de cada paciente que sufra una reacción
     private Registro registro;
+    private Semaphore[] personasConReaccionEnEspera = new Semaphore[20];
     
     Observacion(Recepcion recepcion, ConcurrentLinkedQueue<Integer[]> problematicos, escrituraSegura escrituraS, Registro registro){
         this.escrituraS = escrituraS;
@@ -33,6 +34,7 @@ public class Observacion {
         this.recepcion = recepcion;
         for(int l = 0; l<20 ; l++){ //Inicianizamos los puestos, todos a 0
             salasObservacion[l] = new AtomicBoolean(false);
+            personasConReaccionEnEspera[l] = new Semaphore(0);
         }
         this.registro = registro;
     }
@@ -57,10 +59,10 @@ public class Observacion {
             
         }
         registro.pacienteEntraObersvacion(posicion, id_paciente);
-        if(probabilidad < 5){
+        if(probabilidad < 15){
             Integer[] conReaccion = {id_paciente, posicion}; 
             problematicos.add(conReaccion); //se añade el id del paciente con su puesto
-            reaccion.acquire(); //el paciente se bloquea
+            personasConReaccionEnEspera[posicion].acquire();//el paciente se bloquea
         }
         else{
             sleep(10000);
@@ -77,8 +79,8 @@ public class Observacion {
 
     }
     
-    public void vistoBueno(){ //Se libera al primer paciente en reacción
-        reaccion.release();
+    public void vistoBueno(int posicion){ //Se libera al primer paciente en reacción
+        personasConReaccionEnEspera[posicion].release();
     }
     
    

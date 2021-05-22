@@ -15,6 +15,8 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -25,10 +27,15 @@ import java.util.logging.Logger;
 public class Servidor extends Thread {
     private int pulsaciones = 0;
     private Registro registro;
-     ConcurrentHashMap<Integer, ArrayList<String>> informacion;
+    ExecutorService ayudantes = Executors.newCachedThreadPool();
+    ConcurrentHashMap<Integer, ArrayList<String>> informacion;
+    private ArrayList<Integer> puestosACerrar;
+    private Recepcion recepcion;
     
-    Servidor(Registro registro){
+    Servidor(Registro registro, Recepcion recepcion){
         this.registro = registro;
+        this.recepcion = recepcion;
+        
     }
     
     
@@ -50,6 +57,13 @@ public class Servidor extends Thread {
             while(contador < 300){
                 informacion = registro.getInformacion(); //Leemos el mensaje del cliente
                 salida.writeObject(informacion);
+                puestosACerrar = (ArrayList<Integer>) entrada.readObject();
+                
+                
+                for(int i = 0; i < puestosACerrar.size(); i++){
+                    Ayudante hilo = new Ayudante(recepcion, puestosACerrar.get(i));
+                    ayudantes.execute(hilo);
+                }
                 sleep(1000);
                 contador ++;
                 salida.reset();
@@ -59,6 +73,8 @@ public class Servidor extends Thread {
             conexion.close(); //Y cerramos la conexión
             
         } catch (IOException e) { } catch (InterruptedException ex) {
+            Logger.getLogger(Servidor.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
             Logger.getLogger(Servidor.class.getName()).log(Level.SEVERE, null, ex);
         }
 

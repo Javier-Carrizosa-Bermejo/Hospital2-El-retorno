@@ -251,5 +251,11 @@ public class Pintor extends Thread{
         
     }
     
+    public ArrayList<Integer> getPuestosACerrar(){
+        return interfaz.getPuestosACerrar();
+    }
     
+    public void limpiarPuestos(){
+        interfaz.limpiarPuestosACerrar();
+    }
 }

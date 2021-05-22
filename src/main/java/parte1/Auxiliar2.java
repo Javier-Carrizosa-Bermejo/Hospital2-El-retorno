@@ -28,8 +28,9 @@ public class Auxiliar2 extends Thread {
     @Override
     public void run() {
         for (int j = 0; j <= 100; j++) {
-            registro.auxiliar2Trabaja();
+            
             try {
+                registro.auxiliar2Trabaja();
                 for (int i = 0; i < 20; i++) {
                     recepcion.getVacuna();
                     //String var1 = Integer.toString(recepcion.vacunas);

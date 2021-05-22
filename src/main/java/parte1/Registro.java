@@ -93,12 +93,12 @@ public class Registro {
         
     }
     
-    public void pacienteEntraObersvacion(int puestos, int id){
-        informacion.get(16 + puestos).add(String.valueOf(id));
+    public void pacienteEntraObersvacion(int puesto, int id){
+        informacion.get(16 + puesto).add(String.valueOf(id));
     }
     
-    public void pacienteSaleDeObersvacion(int puestos){
-        informacion.get(16 + puestos).remove(0);
+    public void pacienteSaleDeObersvacion(int puesto){
+        informacion.get(16 + puesto).remove(0);
     }
     
     public void MedicoCuraEnObersvacion(int puestos, int id_med){

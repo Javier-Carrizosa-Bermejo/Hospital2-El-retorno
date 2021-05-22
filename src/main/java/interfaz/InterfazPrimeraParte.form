@@ -77,19 +77,19 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jScrollPane1" alignment="0" min="-2" pref="605" max="-2" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="pacienteRecepcionLabel" min="-2" max="-2" attributes="0"/>
-                              <Component id="pacienteAtendido" min="-2" pref="63" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="pacienteRecepcionLabel" alignment="0" max="32767" attributes="0"/>
+                              <Component id="pacienteAtendido" alignment="0" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="83" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="auxiliarRecepcionLabel" min="-2" max="-2" attributes="0"/>
-                              <Component id="auxiliarTrabajando" min="-2" pref="64" max="-2" attributes="0"/>
+                              <Component id="auxiliarRecepcionLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="auxiliarTrabajando" alignment="0" min="-2" pref="64" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Component id="colaEsperaRecepcionLabel" alignment="0" min="-2" pref="104" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="95" max="32767" attributes="0"/>
+                  <EmptySpace pref="73" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -249,75 +249,72 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="botonPuestoVacunacion1" max="32767" attributes="0"/>
                       <Component id="puestoVacunacion6" alignment="0" pref="94" max="32767" attributes="0"/>
                       <Component id="puestoVacunacion1" alignment="0" max="32767" attributes="0"/>
                       <Component id="puesto1VacunacionLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="puesto6VacunacionLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="botonPuestoVacunacion6" max="32767" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="puestoVacunacion2" alignment="0" pref="94" max="32767" attributes="0"/>
-                      <Component id="puestoVacunacion7" alignment="0" max="32767" attributes="0"/>
-                      <Component id="puesto2VacunacionLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="puesto7VacunacionLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="botonPuestoVacunacion2" max="32767" attributes="0"/>
-                      <Component id="botonPuestoVacunacion7" max="32767" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="puestoVacunacion3" alignment="0" pref="94" max="32767" attributes="0"/>
-                      <Component id="puestoVacunacion8" alignment="0" max="32767" attributes="0"/>
-                      <Component id="puesto3VacunacionLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="puesto8VacunacionLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="botonPuestoVacunacion3" max="32767" attributes="0"/>
-                      <Component id="botonPuestoVacunacion8" max="32767" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="puestoVacunacion4" alignment="0" pref="94" max="32767" attributes="0"/>
-                      <Component id="puestoVacunacion9" alignment="0" max="32767" attributes="0"/>
-                      <Component id="puesto4VacunacionLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="puesto9VacunacionLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="botonPuestoVacunacion4" alignment="0" max="32767" attributes="0"/>
-                      <Component id="botonPuestoVacunacion9" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="botonPuestoVacunacion5" min="-2" pref="95" max="-2" attributes="0"/>
-                          <EmptySpace min="256" max="32767" attributes="0"/>
+                      <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="puestoVacunacion2" alignment="0" pref="94" max="32767" attributes="0"/>
+                          <Component id="puestoVacunacion7" alignment="0" max="32767" attributes="0"/>
                       </Group>
+                      <Component id="puesto2VacunacionLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="puesto7VacunacionLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="puestoVacunacion3" alignment="0" pref="94" max="32767" attributes="0"/>
+                          <Component id="puestoVacunacion8" alignment="0" max="32767" attributes="0"/>
+                      </Group>
+                      <Component id="puesto3VacunacionLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="puesto8VacunacionLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="puestoVacunacion4" alignment="0" pref="94" max="32767" attributes="0"/>
+                          <Component id="puestoVacunacion9" alignment="0" max="32767" attributes="0"/>
+                      </Group>
+                      <Component id="puesto4VacunacionLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="puesto9VacunacionLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="puesto5VacunacionLabel" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                           <Component id="auxiliarVacunacionLabel" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="219" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="289" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <Group type="103" groupAlignment="1" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="botonPuestoVacunacion10" max="32767" attributes="0"/>
-                                      <Component id="puestoVacunacion10" pref="94" max="32767" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="puestoVacunacion5" alignment="0" pref="94" max="32767" attributes="0"/>
+                                      <Component id="puestoVacunacion10" alignment="0" max="32767" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="297" max="-2" attributes="0"/>
-                                  <Component id="vacunasDisponiblesTextField" pref="112" max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="-2" pref="228" max="-2" attributes="0"/>
+                                          <Component id="auxiliarVacunacionTextField" max="32767" attributes="0"/>
+                                          <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="-2" pref="230" max="-2" attributes="0"/>
+                                          <Component id="vacunasDisponiblesTextField" max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
                               </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="puesto10VacunacionLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="puestoVacunacion5" alignment="0" min="-2" pref="94" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="vacunasDispoVacunacionLabel" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      <Component id="auxiliarVacunacionTextField" alignment="1" min="-2" pref="110" max="-2" attributes="0"/>
-                                  </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="puesto10VacunacionLabel" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace pref="267" max="32767" attributes="0"/>
+                                  <Component id="vacunasDispoVacunacionLabel" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace min="-2" pref="173" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="211" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -328,7 +325,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="salaVacunacionLabel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="puesto1VacunacionLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="puesto2VacunacionLabel" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -342,19 +339,11 @@
                       <Component id="puestoVacunacion1" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                       <Component id="puestoVacunacion2" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                       <Component id="puestoVacunacion3" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                      <Component id="puestoVacunacion4" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                       <Component id="puestoVacunacion5" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                       <Component id="auxiliarVacunacionTextField" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                      <Component id="puestoVacunacion4" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="botonPuestoVacunacion2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="botonPuestoVacunacion3" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="botonPuestoVacunacion4" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="botonPuestoVacunacion5" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="botonPuestoVacunacion1" alignment="0" min="-2" pref="23" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="puesto6VacunacionLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="puesto7VacunacionLabel" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -363,31 +352,16 @@
                       <Component id="puesto10VacunacionLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="vacunasDispoVacunacionLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                          <Component id="vacunasDisponiblesTextField" min="-2" pref="32" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="puestoVacunacion6" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                              <Component id="puestoVacunacion7" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                              <Component id="puestoVacunacion8" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                              <Component id="puestoVacunacion9" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                              <Component id="puestoVacunacion10" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="botonPuestoVacunacion6" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="botonPuestoVacunacion7" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="botonPuestoVacunacion8" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="botonPuestoVacunacion9" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="botonPuestoVacunacion10" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="puestoVacunacion7" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                      <Component id="puestoVacunacion6" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                      <Component id="puestoVacunacion8" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                      <Component id="puestoVacunacion9" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                      <Component id="puestoVacunacion10" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                      <Component id="vacunasDisponiblesTextField" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -502,9 +476,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="auxiliarVacunacionTextField">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="auxiliarVacunacionTextFieldActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="auxiliarVacunacionLabel">
           <Properties>
@@ -524,86 +495,6 @@
             <Property name="text" type="java.lang.String" value="Vacunas Disponibles"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JToggleButton" name="botonPuestoVacunacion1">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Cerrar"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonPuestoVacunacion1ActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JToggleButton" name="botonPuestoVacunacion2">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Cerrar"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonPuestoVacunacion2ActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JToggleButton" name="botonPuestoVacunacion3">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Cerrar"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonPuestoVacunacion3ActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JToggleButton" name="botonPuestoVacunacion4">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Cerrar"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonPuestoVacunacion4ActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JToggleButton" name="botonPuestoVacunacion5">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Cerrar"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonPuestoVacunacion5ActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JToggleButton" name="botonPuestoVacunacion6">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Cerrar"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonPuestoVacunacion6ActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JToggleButton" name="botonPuestoVacunacion7">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Cerrar"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonPuestoVacunacion7ActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JToggleButton" name="botonPuestoVacunacion8">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Cerrar"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonPuestoVacunacion8ActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JToggleButton" name="botonPuestoVacunacion9">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Cerrar"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonPuestoVacunacion9ActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JToggleButton" name="botonPuestoVacunacion10">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Cerrar"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonPuestoVacunacion10ActionPerformed"/>
-          </Events>
-        </Component>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="salaObservacionPanel">
@@ -617,7 +508,7 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace pref="67" max="32767" attributes="0"/>
+                  <EmptySpace pref="45" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="puesto1ObservacionLabel" min="-2" max="-2" attributes="0"/>
