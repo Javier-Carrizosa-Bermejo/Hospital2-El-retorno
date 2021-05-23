@@ -58,7 +58,7 @@ public class Observacion {
             }
             
         }
-        registro.pacienteEntraObersvacion(posicion, id_paciente);
+        registro.pacienteEntraObsersvacion(posicion, id_paciente);
         if(probabilidad < 15){
             Integer[] conReaccion = {id_paciente, posicion}; 
             problematicos.add(conReaccion); //se añade el id del paciente con su puesto
@@ -73,7 +73,7 @@ public class Observacion {
         String var1 = Integer.toString(id_paciente);
         String var2 = Integer.toString(posicion);
         escrituraS.escritura(4, var1, var2, "");
-        registro.pacienteSaleDeObersvacion(posicion);
+        registro.pacienteSaleDeObsersvacion(posicion);
         //System.out.println(id_paciente + " Se marcha a casa del puesto" + posicion);
         
 

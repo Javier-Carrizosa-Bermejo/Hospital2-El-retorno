@@ -23,17 +23,17 @@ import java.time.format.DateTimeFormatter;
  */
 public class Log {
     private int mensaje, contador;
-    //generosF.delete();
+    //hospitalF.delete();
     static String sep = File.separator;
     static Path path = Paths.get("evolucionHospital.txt");
-    //File generosF = new File(sep + "temp" + sep + "evolucionHospital.txt");
-    File generosF = new File("evolucionHospital.txt");
-    PrintWriter pw = new PrintWriter(generosF);
+    //File hospitalF = new File(sep + "temp" + sep + "evolucionHospital.txt");
+    File hospitalF = new File("evolucionHospital.txt");
+    PrintWriter pw = new PrintWriter(hospitalF);
     DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yy/MM/dd HH:mm:ss.SSS");
    
    Log(int mensaje) throws FileNotFoundException{
        this.mensaje = mensaje;
-       PrintWriter pw = new PrintWriter(generosF);
+       PrintWriter pw = new PrintWriter(hospitalF);
    } 
    
    public static void borrarArchivo(String path){
