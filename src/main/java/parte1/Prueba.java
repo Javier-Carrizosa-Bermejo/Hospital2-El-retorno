@@ -6,6 +6,7 @@
 package parte1;
 
 import Cliente.Cliente;
+import interfaz.PintorPrimeraParte;
 import java.io.FileNotFoundException;
 import static java.lang.Thread.sleep;
 import java.util.concurrent.ConcurrentLinkedQueue;
@@ -23,8 +24,8 @@ public class Prueba {
     public static void main(String[] args) throws InterruptedException, FileNotFoundException {
         // TODO code application logic here
         Registro registro = new Registro();
-        escrituraSegura escrituraS = new escrituraSegura(16);
-        escrituraS.borrarArchivo(escrituraSegura.path.toString());
+        Log escrituraS = new Log(16);
+        escrituraS.borrarArchivo(Log.path.toString());
         LinkedBlockingQueue<Paciente> pacientes = new LinkedBlockingQueue<>();
         ConcurrentLinkedQueue<Integer[]> reaccionesObservacion = new ConcurrentLinkedQueue<Integer[]>();
         PuestoVacunacion[] puestos = new PuestoVacunacion[10];
@@ -32,13 +33,17 @@ public class Prueba {
         Recepcion recepcion = new Recepcion(puestos, salaObservacion, escrituraS, registro);
         salaObservacion = new Observacion(recepcion, reaccionesObservacion, escrituraS, registro);
         
+        /*
         Servidor server = new Servidor(registro, recepcion);
         server.start();
         Cliente cliente = new Cliente();
-        cliente.start();
+        cliente.start();*/
         
         Auxiliar2 javi = new Auxiliar2(recepcion, escrituraS, registro);
         javi.start();
+        
+        PintorPrimeraParte pintor = new PintorPrimeraParte(registro);
+        pintor.start();
         
         for(int j = 0; j < 10; j++){
             PuestoVacunacion puesto = new PuestoVacunacion(j, recepcion, escrituraS, registro);
@@ -56,7 +61,7 @@ public class Prueba {
         }
         
         
-        for(int k = 0; k < 200; k ++){
+        for(int k = 0; k < 2000; k ++){
             Paciente sara = new Paciente(k, salaObservacion);
             registro.nuevoPacienteCola(k);
             sleep(1000);

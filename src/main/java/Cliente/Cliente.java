@@ -26,7 +26,8 @@ public class Cliente  extends Thread{
     ObjectInputStream entrada;
     ObjectOutputStream salida;
     int contador = 0;
-    private ConcurrentHashMap<Integer, ArrayList<String>> informacion;    
+    private ConcurrentHashMap<Integer, ArrayList<String>> informacion;
+    private boolean cerrado = false;
     
     public Cliente(){
         picasso = new Pintor();
@@ -42,7 +43,7 @@ public class Cliente  extends Thread{
             salida = new ObjectOutputStream(cliente.getOutputStream());
             
             entrada = new ObjectInputStream(cliente.getInputStream()); //Creamos los canales de E/S
-            while(contador < 300){
+            while(!cerrado){
                 //salida.writeObject((Integer) contador); //Enviamos un mensaje al servidor
                 informacion = (ConcurrentHashMap<Integer, ArrayList<String>>) entrada.readObject(); //Leemos la respuesta
                 salida.writeObject(picasso.getPuestosACerrar());
@@ -50,8 +51,10 @@ public class Cliente  extends Thread{
                 contador++;
                 salida.reset();
                 picasso.setInfo(informacion);
+                cerrado = picasso.getCerrarCliente();
                 
             }
+            picasso.setPintar();
             entrada.close(); //Cerramos los flujos de entrada y salida
             salida.close();
             cliente.close(); //Cerramos la conexión

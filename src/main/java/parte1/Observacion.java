@@ -19,16 +19,16 @@ import java.util.concurrent.locks.ReentrantLock;
  * @author Revij
  */
 public class Observacion {
-    private escrituraSegura escrituraS;
-    AtomicBoolean[] salasObservacion = new AtomicBoolean[20]; //Muestra si una sala está ocupada o no
+    private Log escrituraS;
+    private AtomicBoolean[] salasObservacion = new AtomicBoolean[20]; //Muestra si una sala está ocupada o no
     //False si no está ocupado, true si lo está.  
-    Semaphore reaccion = new Semaphore(0, true); //Bloqueará a los pacientes que sufran una reacción. 
+    private Semaphore reaccion = new Semaphore(0, true); //Bloqueará a los pacientes que sufran una reacción. 
     private Recepcion recepcion;
     private ConcurrentLinkedQueue<Integer[]> problematicos; //guardará el puesto y el id de cada paciente que sufra una reacción
     private Registro registro;
     private Semaphore[] personasConReaccionEnEspera = new Semaphore[20];
     
-    Observacion(Recepcion recepcion, ConcurrentLinkedQueue<Integer[]> problematicos, escrituraSegura escrituraS, Registro registro){
+    Observacion(Recepcion recepcion, ConcurrentLinkedQueue<Integer[]> problematicos, Log escrituraS, Registro registro){
         this.escrituraS = escrituraS;
         this.problematicos = problematicos;
         this.recepcion = recepcion;

@@ -18,7 +18,7 @@ import java.util.concurrent.locks.ReentrantLock;
  */
 public class PuestoVacunacion {
     Random rand = new Random();
-    private escrituraSegura escrituraS;
+    private Log escrituraS;
     private Lock turno = new ReentrantLock();
     private Condition enEspera = turno.newCondition();
     private Condition cierre = turno.newCondition();
@@ -27,7 +27,7 @@ public class PuestoVacunacion {
     private Registro registro;
     private boolean pacienteEnCamino = false, cerrar = false;
     
-    PuestoVacunacion(int id, Recepcion recepcion, escrituraSegura escrituraS, Registro registro){
+    PuestoVacunacion(int id, Recepcion recepcion, Log escrituraS, Registro registro){
         this.escrituraS = escrituraS;
         this.id = id; //identificador de la sala
         this.recepcion = recepcion;

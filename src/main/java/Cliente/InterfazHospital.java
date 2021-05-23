@@ -22,6 +22,7 @@ public class InterfazHospital extends javax.swing.JFrame {
     private javax.swing.JTextField[] puestosCuadroTexto = new javax.swing.JTextField[10];
     private javax.swing.JTextField[] puestosObservacionCuadroTexto = new javax.swing.JTextField[20];
     private ArrayList<Integer> puestosACerrar = new ArrayList<Integer>();
+    private boolean cerrarCliente = false;
     
     public InterfazHospital() {
         initComponents();
@@ -77,6 +78,7 @@ public class InterfazHospital extends javax.swing.JFrame {
         pacienteRecepcionLabel = new javax.swing.JLabel();
         auxiliarRecepcionLabel = new javax.swing.JLabel();
         colaEsperaRecepcionLabel = new javax.swing.JLabel();
+        jToggleButton1 = new javax.swing.JToggleButton();
         salaDescansoPanel = new javax.swing.JPanel();
         salaDescansoLabel = new javax.swing.JLabel();
         salaDescansoTextArea = new javax.swing.JScrollPane();
@@ -180,14 +182,17 @@ public class InterfazHospital extends javax.swing.JFrame {
 
         colaEsperaRecepcionLabel.setText("Cola de espera");
 
+        jToggleButton1.setText("Salir");
+        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout recepcionPanelLayout = new javax.swing.GroupLayout(recepcionPanel);
         recepcionPanel.setLayout(recepcionPanelLayout);
         recepcionPanelLayout.setHorizontalGroup(
             recepcionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, recepcionPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(recepcionLabel)
-                .addGap(315, 315, 315))
             .addGroup(recepcionPanelLayout.createSequentialGroup()
                 .addGap(32, 32, 32)
                 .addGroup(recepcionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -202,6 +207,15 @@ public class InterfazHospital extends javax.swing.JFrame {
                             .addComponent(auxiliarTrabajando, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(colaEsperaRecepcionLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(95, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, recepcionPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(recepcionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, recepcionPanelLayout.createSequentialGroup()
+                        .addComponent(recepcionLabel)
+                        .addGap(315, 315, 315))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, recepcionPanelLayout.createSequentialGroup()
+                        .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(19, 19, 19))))
         );
         recepcionPanelLayout.setVerticalGroup(
             recepcionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -220,7 +234,9 @@ public class InterfazHospital extends javax.swing.JFrame {
                 .addGroup(recepcionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(auxiliarTrabajando, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pacienteAtendido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jToggleButton1)
+                .addContainerGap())
         );
 
         salaDescansoPanel.setBackground(new java.awt.Color(153, 153, 153));
@@ -464,12 +480,13 @@ public class InterfazHospital extends javax.swing.JFrame {
                     .addComponent(puestoVacunacion5, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(auxiliarVacunacionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(salaVacunacionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botonPuestoVacunacion2)
-                    .addComponent(botonPuestoVacunacion3)
-                    .addComponent(botonPuestoVacunacion4)
-                    .addComponent(botonPuestoVacunacion5)
-                    .addComponent(botonPuestoVacunacion1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(salaVacunacionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(botonPuestoVacunacion1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(salaVacunacionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(botonPuestoVacunacion2)
+                        .addComponent(botonPuestoVacunacion3)
+                        .addComponent(botonPuestoVacunacion4)
+                        .addComponent(botonPuestoVacunacion5)))
                 .addGap(11, 11, 11)
                 .addGroup(salaVacunacionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(puesto6VacunacionLabel)
@@ -839,6 +856,17 @@ public class InterfazHospital extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_botonPuestoVacunacion9ActionPerformed
 
+    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+
+        cerradura.lock();
+        try {
+            puestosACerrar.add(11);
+        cerrarCliente = true;
+        } finally {
+            cerradura.unlock();
+        }
+    }//GEN-LAST:event_jToggleButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -892,6 +920,7 @@ public class InterfazHospital extends javax.swing.JFrame {
     private javax.swing.JLabel colaEsperaRecepcionLabel;
     private javax.swing.JTextArea colaPacientes;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JTextField pacienteAtendido;
     private javax.swing.JLabel pacienteRecepcionLabel;
     private javax.swing.JLabel puesto10ObservacionLabel;
@@ -1020,6 +1049,10 @@ public class InterfazHospital extends javax.swing.JFrame {
         } finally {
             cerradura.unlock();
         }
+    }
+    
+    public boolean getCerrar(){
+        return cerrarCliente;
     }
     
 

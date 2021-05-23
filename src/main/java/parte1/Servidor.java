@@ -5,16 +5,10 @@
  */
 package parte1;
 
-import Cliente.Cliente;
-import java.io.DataOutputStream;
+
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import static java.lang.Thread.sleep;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.ArrayList;
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.logging.Level;
@@ -25,12 +19,10 @@ import java.util.logging.Logger;
  * @author Revij
  */
 public class Servidor extends Thread {
-    private int pulsaciones = 0;
     private Registro registro;
-    ExecutorService ayudantes = Executors.newCachedThreadPool();
-    ConcurrentHashMap<Integer, ArrayList<String>> informacion;
-    private ArrayList<Integer> puestosACerrar;
+    ExecutorService conexiones = Executors.newCachedThreadPool();
     private Recepcion recepcion;
+    private boolean cerrado = false;
     
     Servidor(Registro registro, Recepcion recepcion){
         this.registro = registro;
@@ -42,46 +34,16 @@ public class Servidor extends Thread {
     @Override
     public void run(){
         ServerSocket servidor;
-        Socket conexion;
-        ObjectOutputStream salida;
-        ObjectInputStream entrada;
-        int contador = 0;
-        
-        
-
+               
         try {
-            servidor = new ServerSocket(5000); //Creamos un ServerSocket en el Puerto 5000ç
-            conexion = servidor.accept(); //Esperamos una conexión
-            entrada = new ObjectInputStream(conexion.getInputStream()); //Abrimos los canales de E/S
-            salida = new ObjectOutputStream(conexion.getOutputStream());
-            while(contador < 300){
-                informacion = registro.getInformacion(); //Leemos el mensaje del cliente
-                salida.writeObject(informacion);
-                puestosACerrar = (ArrayList<Integer>) entrada.readObject();
-                
-                
-                for(int i = 0; i < puestosACerrar.size(); i++){
-                    Ayudante hilo = new Ayudante(recepcion, puestosACerrar.get(i));
-                    ayudantes.execute(hilo);
-                }
-                sleep(1000);
-                contador ++;
-                salida.reset();
-            }
-            salida.close();
-            entrada.close(); //Cerramos los flujos de entrada y salida
-            conexion.close(); //Y cerramos la conexión
-            
-        } catch (IOException e) { } catch (InterruptedException ex) {
-            Logger.getLogger(Servidor.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
+            servidor = new ServerSocket(5000); //Creamos un ServerSocket en el Puerto 5000
+            Socket conexion = servidor.accept(); //Esperamos una conexión
+            ConexionTCP cliente = new ConexionTCP(registro, recepcion, conexion);
+            conexiones.execute(cliente);
+        } catch (IOException ex) {
             Logger.getLogger(Servidor.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
     
-    public void pulsacionesAumentar(){
-        pulsaciones++;
-    }
-
 }

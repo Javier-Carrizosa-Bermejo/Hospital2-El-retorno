@@ -5,6 +5,10 @@
  */
 package parte1;
 
+/**
+ *
+ * @author Revij
+ */
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
@@ -17,7 +21,7 @@ import java.time.format.DateTimeFormatter;
  *
  * @author luismi
  */
-public class escrituraSegura {
+public class Log {
     private int mensaje, contador;
     //generosF.delete();
     static String sep = File.separator;
@@ -27,7 +31,7 @@ public class escrituraSegura {
     PrintWriter pw = new PrintWriter(generosF);
     DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yy/MM/dd HH:mm:ss.SSS");
    
-   escrituraSegura(int mensaje) throws FileNotFoundException{
+   Log(int mensaje) throws FileNotFoundException{
        this.mensaje = mensaje;
        PrintWriter pw = new PrintWriter(generosF);
    } 

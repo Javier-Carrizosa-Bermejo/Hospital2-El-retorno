@@ -14,12 +14,11 @@ import java.util.logging.Logger;
  * @author luismi
  */
 public class Auxiliar2 extends Thread {
-    private escrituraSegura escrituraS;
+    private Log escrituraS;
     private Recepcion recepcion;
-    public Semaphore vacuna = new Semaphore(0);
     private Registro registro;
 
-    Auxiliar2(Recepcion recepcion, escrituraSegura escrituraS, Registro registro) {
+    Auxiliar2(Recepcion recepcion, Log escrituraS, Registro registro) {
         this.escrituraS = escrituraS;
         this.recepcion = recepcion;
         this.registro = registro;

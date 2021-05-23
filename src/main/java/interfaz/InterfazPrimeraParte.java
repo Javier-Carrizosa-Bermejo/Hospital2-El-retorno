@@ -5,6 +5,10 @@
  */
 package interfaz;
 
+import java.util.ArrayList;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
 /**
  *
  * @author Revij
@@ -14,8 +18,44 @@ public class InterfazPrimeraParte extends javax.swing.JFrame {
     /**
      * Creates new form InterfazPrimeraParte
      */
+    private Lock cerradura = new ReentrantLock();
+    private javax.swing.JTextField[] puestosCuadroTexto = new javax.swing.JTextField[10];
+    private javax.swing.JTextField[] puestosObservacionCuadroTexto = new javax.swing.JTextField[20];
+    private ArrayList<Integer> puestosACerrar = new ArrayList<Integer>();
+    
     public InterfazPrimeraParte() {
         initComponents();
+        puestosCuadroTexto[0] = puestoVacunacion1;
+        puestosCuadroTexto[1] = puestoVacunacion2;
+        puestosCuadroTexto[2] = puestoVacunacion3;
+        puestosCuadroTexto[3] = puestoVacunacion4;
+        puestosCuadroTexto[4] = puestoVacunacion5;
+        puestosCuadroTexto[5] = puestoVacunacion6;
+        puestosCuadroTexto[6] = puestoVacunacion7;
+        puestosCuadroTexto[7] = puestoVacunacion8;
+        puestosCuadroTexto[8] = puestoVacunacion9;
+        puestosCuadroTexto[9] = puestoVacunacion10;
+        
+        puestosObservacionCuadroTexto[0] = puestoObservacion1;
+        puestosObservacionCuadroTexto[1] = puestoObservacion2;
+        puestosObservacionCuadroTexto[2] = puestoObservacion3;
+        puestosObservacionCuadroTexto[3] = puestoObservacion4;
+        puestosObservacionCuadroTexto[4] = puestoObservacion5;
+        puestosObservacionCuadroTexto[5] = puestoObservacion6;
+        puestosObservacionCuadroTexto[6] = puestoObservacion7;
+        puestosObservacionCuadroTexto[7] = puestoObservacion8;
+        puestosObservacionCuadroTexto[8] = puestoObservacion9;
+        puestosObservacionCuadroTexto[9] = puestoObservacion10;
+        puestosObservacionCuadroTexto[10] = puestoObservacion11;
+        puestosObservacionCuadroTexto[11] = puestoObservacion12;
+        puestosObservacionCuadroTexto[12] = puestoObservacion13;
+        puestosObservacionCuadroTexto[13] = puestoObservacion14;
+        puestosObservacionCuadroTexto[14] = puestoObservacion15;
+        puestosObservacionCuadroTexto[15] = puestoObservacion16;
+        puestosObservacionCuadroTexto[16] = puestoObservacion17;
+        puestosObservacionCuadroTexto[17] = puestoObservacion18;
+        puestosObservacionCuadroTexto[18] = puestoObservacion19;
+        puestosObservacionCuadroTexto[19] = puestoObservacion20;
     }
 
     /**
@@ -713,4 +753,39 @@ public class InterfazPrimeraParte extends javax.swing.JFrame {
     private javax.swing.JLabel vacunasDispoVacunacionLabel;
     private javax.swing.JTextField vacunasDisponiblesTextField;
     // End of variables declaration//GEN-END:variables
+
+     public void colaPacientesModificar(String texto){
+        colaPacientes.setText(texto);
+    }
+    
+    public void pacienteAtendidoModificar(String texto){
+        pacienteAtendido.setText(texto);
+    }
+    
+    public void salaDescansoModificar(String texto){
+        salaDescanso.setText(texto);
+    }
+    
+    public void modificarAuxiliar(String texto){
+        auxiliarTrabajando.setText(texto);
+    }
+    
+    public void modificarAuxiliar2(String texto){
+        auxiliarVacunacionTextField.setText(texto);
+    }
+    
+    public void setVacunasDisponibles(String texto){
+        vacunasDisponiblesTextField.setText(texto);
+    }
+    
+    
+    public void pintarVacunacion(String texto, int nmero){
+        puestosCuadroTexto[nmero-4].setText(texto);
+        
+    }
+    
+    public void pintarObservacion(String texto, int nmero){
+        puestosObservacionCuadroTexto[nmero-16].setText(texto);
+    }
+
 }

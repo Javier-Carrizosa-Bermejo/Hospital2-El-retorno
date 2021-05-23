@@ -3,46 +3,53 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Cliente;
+package interfaz;
 
+
+
+import static java.lang.Thread.sleep;
 import java.util.ArrayList;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import parte1.Registro;
 
 /**
  *
  * @author Revij
  */
-public class Pintor extends Thread{
-    InterfazHospital interfaz;
+public class PintorPrimeraParte extends Thread {
+    InterfazPrimeraParte interfaz;
     private ConcurrentHashMap<Integer, ArrayList<String>> informacion;
     Lock cerradura = new ReentrantLock();
-    private boolean pintar = true;
+    private Registro registro;
     
-    Pintor(){
-        interfaz = new InterfazHospital();
-        interfaz.setVisible(true);
+    public PintorPrimeraParte(Registro registro){
+        this.registro = registro;
+        this.interfaz = new InterfazPrimeraParte();
+        this.interfaz.setVisible(true);
         //interfaz.inicializarse();
     }
     
+    
     @Override
     public void run(){
-        while(pintar){
-            
-            pintar();
+        while(true){
+            informacion = new ConcurrentHashMap<>((registro.getInformacion()));
             
             try {
-                sleep(1000);
+                pintar();
+                sleep(100);
             } catch (InterruptedException ex) {
-                Logger.getLogger(Pintor.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(PintorPrimeraParte.class.getName()).log(Level.SEVERE, null, ex);
             }
+            
         }
     }
     
-    public void pintar(){
+    public void pintar() throws InterruptedException{
         cerradura.lock();
         try {
             if(informacion != null){
@@ -55,7 +62,7 @@ public class Pintor extends Thread{
                puestoDelAuxiliar2(informacion.get(14));
                vacunasDisponibles(informacion.get(15));
             }
-
+            
         } finally {
             cerradura.unlock();
         }
@@ -116,6 +123,7 @@ public class Pintor extends Thread{
     }
     
     public void salaDescanso(ArrayList<String> durmientes){
+        //System.out.println("Puesto de descanso --> " + durmientes);
         String texto = " ";
         String persona;
         for(int j = 0; j < durmientes.size(); j++){
@@ -168,6 +176,7 @@ public class Pintor extends Thread{
     }
     
     public String stringPuestoVacunacion(ArrayList<String> puesto){
+        //System.out.println("Puesto de vacunacion --> " + puesto);
         String texto = " ";
         if(puesto.size() == 1){
             if(puesto.get(0).length() == 1){
@@ -211,6 +220,7 @@ public class Pintor extends Thread{
     
     
     public String stringPuestoObservacion(ArrayList<String> puesto){
+        //System.out.println("Puesto de vacunacion --> " + puesto);
         String texto = " ";
         if(puesto.size() == 1){
             if(puesto.get(0).length() == 1){
@@ -252,20 +262,5 @@ public class Pintor extends Thread{
         
     }
     
-    public ArrayList<Integer> getPuestosACerrar(){
-        return interfaz.getPuestosACerrar();
-    }
-    
-    public void limpiarPuestos(){
-        interfaz.limpiarPuestosACerrar();
-    }
-    
-    public boolean getCerrarCliente(){
-        return interfaz.getCerrar();
-    }
-    
-    public void setPintar(){
-        interfaz.setVisible(false);
-        pintar = false;
-    }
+
 }

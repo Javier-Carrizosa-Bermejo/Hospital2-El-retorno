@@ -16,9 +16,9 @@ import java.util.concurrent.locks.ReentrantLock;
  * @author Revij
  */
 public class Recepcion {
-    private escrituraSegura escrituraS;
+    private Log escrituraS;
     public Semaphore vacuna = new Semaphore(0);
-    AtomicInteger numeroVacunas = new AtomicInteger(0);
+    private AtomicInteger numeroVacunas = new AtomicInteger(0);
     private boolean[] listaSalas = new boolean[10], salasMedicos = new boolean[10];
     private PuestoVacunacion[] puestos; //lista de puestos, 
     private Lock libre = new ReentrantLock(), medicos = new ReentrantLock();
@@ -28,7 +28,7 @@ public class Recepcion {
     private Registro registro;
     
     
-    Recepcion(PuestoVacunacion[] puestos, Observacion salaObservacion, escrituraSegura escrituraS, Registro registro){
+    Recepcion(PuestoVacunacion[] puestos, Observacion salaObservacion, Log escrituraS, Registro registro){
         for(int i = 0; i < 10;i++){
             listaSalas[i] = false; //false si la sala está ocupada, true si está disponible. Ninguna sala está disponible al comienzo
             salasMedicos[i] = false;

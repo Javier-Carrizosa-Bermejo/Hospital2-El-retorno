@@ -46,7 +46,7 @@ public class Registro {
     }
     
     public void descansa(){
-        informacion.get(2).remove(0);
+        informacion.get(2).clear();
         informacion.get(3).add("Auxiliar1");
     }
     
@@ -55,9 +55,9 @@ public class Registro {
         
     }
     
-    public void medicoAbandonaSala(int puesto){
-         informacion.get(3).add(informacion.get(puesto + 4).get(0));
-         informacion.get(puesto + 4).remove(0);
+    public void medicoAbandonaSala(int id, int puesto){
+         informacion.get(3).add(String.valueOf(id));
+         informacion.get(puesto + 4).clear();
         
     }
     
@@ -80,7 +80,7 @@ public class Registro {
     
     public void auxiliar2Descansa(){
         informacion.get(3).add("Auxiliar2");
-        informacion.get(14).remove("Auxiliar2");
+        informacion.get(14).clear();
     }
     
     public void seModificanVacunas(int vacunas){
@@ -98,7 +98,7 @@ public class Registro {
     }
     
     public void pacienteSaleDeObersvacion(int puesto){
-        informacion.get(16 + puesto).remove(0);
+        informacion.get(16 + puesto).clear();
     }
     
     public void MedicoCuraEnObersvacion(int puestos, int id_med){

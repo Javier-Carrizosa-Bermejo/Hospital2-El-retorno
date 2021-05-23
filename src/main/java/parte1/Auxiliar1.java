@@ -15,16 +15,16 @@ import java.util.logging.Logger;
  * @author Revij
  */
 public class Auxiliar1 extends Thread {
-    private escrituraSegura escrituraS;
+    private Log escrituraS;
     private int atendidos = 0;
-    long tiempo;
+    private long tiempo;
     private LinkedBlockingQueue<Paciente> pacientes; //cola de entrada
     private Recepcion recepcion;
-    Paciente persona;
-    Random rand = new Random();
-    Registro registro;
+    private Paciente persona;
+    private Random rand = new Random();
+    private Registro registro;
     
-    Auxiliar1(Recepcion recepcion, LinkedBlockingQueue<Paciente> pacientes, escrituraSegura escrituraS, Registro registro){
+    Auxiliar1(Recepcion recepcion, LinkedBlockingQueue<Paciente> pacientes, Log escrituraS, Registro registro){
         this.escrituraS = escrituraS;
         this.recepcion = recepcion;
         this.pacientes = pacientes;

@@ -17,18 +17,18 @@ import java.util.logging.Logger;
  * @author Revij
  */
 public class Sanitario extends Thread{
-    Random rand = new Random();
-    private escrituraSegura escrituraS;
+    private Random rand = new Random();
+    private Log escrituraS;
     private int tiempoDormir, id;
     private Recepcion recepcion;
     private PuestoVacunacion miPuesto;
     private ConcurrentLinkedQueue<Integer[]> problematicos; //cola de pacientes que sufren una reacción
     private Integer[] paciente; //paciente que sufre una reacción
     private Observacion salaObservacion; 
-    Registro registro;
+    private Registro registro;
     
     Sanitario(Recepcion recepcion, int id, ConcurrentLinkedQueue<Integer[]> problematicos, 
-            Observacion salaObservacion, escrituraSegura escrituraS, Registro registro){
+            Observacion salaObservacion, Log escrituraS, Registro registro){
         this.escrituraS = escrituraS;
         this.problematicos = problematicos;
         tiempoDormir= ( rand.nextInt(3) + 1 ) * 1000;
@@ -55,7 +55,7 @@ public class Sanitario extends Thread{
             miPuesto = recepcion.medicoEntraEnSala();   //El médico pilla la primera sala libre que vea
             registro.medicoEntraEnSala(id, miPuesto.getID());
             miPuesto.vacunar(id);                       //Procede a vacunar, tras 15 pacientes se va a descansar
-            registro.medicoAbandonaSala(miPuesto.getID()); 
+            registro.medicoAbandonaSala(this.id, miPuesto.getID()); 
             tiempoDormir = (rand.nextInt(4) + 5) * 1000;
             sleep(tiempoDormir);                        //Descansa
             registro.medicoAbandonaDescanso(id);
